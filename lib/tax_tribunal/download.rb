@@ -4,6 +4,7 @@ module TaxTribunal
       set :raise_errors, true
       set :show_exceptions, false
       set :views, "#{settings.root}/../../views"
+      set :public_folder, "#{settings.root}/../../public"
     end
 
     get '/:case_id' do |case_id|
