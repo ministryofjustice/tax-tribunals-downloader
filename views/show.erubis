@@ -1,4 +1,6 @@
 <h1>Files for <%= @case.case_id %></h1>
+<ul>
 <% @case.files.each do |file| %>
-  <a href='<%= file.s3_url %>'><%= file.key %></a>
+  <li><a href='<%= file.s3_url %>'><%= file.key %></a></li>
 <% end %>
+</ul>
