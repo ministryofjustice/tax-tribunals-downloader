@@ -6,7 +6,6 @@ module TaxTribunal
 
     class CaseNotFound < StandardError; end
     include TaxTribunal::S3
-    extend TaxTribunal::S3
     extend Forwardable
     def_delegators :bucket, :objects
 

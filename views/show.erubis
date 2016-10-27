@@ -1,6 +1,11 @@
+<% if @case %>
 <h1>Files for <%= @case.case_id %></h1>
 <ul>
 <% @case.files.each do |file| %>
   <li><a href='<%= file.s3_url %>'><%= file.key %></a></li>
 <% end %>
 </ul>
+<a href='/logout'>Logout</a>
+<% else %>
+<h1>You need to <a href='/login'>Login</a></h1>
+<% end %>

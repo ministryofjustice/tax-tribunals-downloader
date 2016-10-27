@@ -18,3 +18,5 @@
 /coverage/*
 tags
 .env
+.env.test
+.env.development

@@ -1,14 +1,15 @@
 module TaxTribunal
-  class Downloader < Sinatra::Base
-    configure do
-      set :raise_errors, true
-      set :show_exceptions, false
-      set :views, "#{settings.root}/../../views"
-      set :public_folder, "#{settings.root}/../../public"
-    end
-
+  class Download < Downloader
     get '/:case_id' do |case_id|
-      @case = Case.new(case_id)
+      # Using the session directly as encapsulating the session in an
+      # authorised? helper method results in intermittent spec failures,
+      # even when the email is not set on the session.
+      if session[:email]
+        @case = Case.new(case_id)
+      else
+        session[:return_to] = "/#{case_id}"
+      end
+
       erb :show
     end
   end
