@@ -54,3 +54,12 @@ To set the required environment variables for testing, just copy
 `.env.example` to `.env` and run your tests.  It uses the `dotenv` gem,
 which is setup and scoped to `spec_helper.rb`, which keeps it from
 polluting the other environments.
+
+## Development
+
+It is easiest to work on this app against a locally running copy of
+`moj-sso`.  The `.env.example` already has settings for doing this with
+a copy of `moj-sso` running on port 5000 of your localhost.  Once you
+have set up `moj-sso`, you will need to create an appropriate role to
+associate with your app (`.env.example` assumes `viewer`) and add users.
+Follow the directions on the `moj-sso` repo to do so.
