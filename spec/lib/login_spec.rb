@@ -1,6 +1,25 @@
 require 'spec_helper'
 
 RSpec.describe TaxTribunal::Login do
+  let(:parsed_oauth_data) {
+    {
+      id: 1,
+      email: "superadmin@example.com",
+      first_name: "John",
+      last_name: "Bloggs",
+      permissions: [
+        {
+          organisation: "hmcts.moj",
+          roles: ["viewer"]
+        }
+      ],
+      links: {
+        profile: "http://localhost:5000/profile",
+        logout: "http://localhost:5000/users/sign_out"
+      }
+    }
+  }
+
   describe '/login' do
     context 'the user is already logged in' do
       it 'shows the user that they are logged in' do
@@ -42,25 +61,6 @@ RSpec.describe TaxTribunal::Login do
   end
 
   describe '/oauth/callback' do
-    let(:parsed_oauth_data) {
-      {
-        id: 1,
-        email: "superadmin@example.com",
-        first_name: "John",
-        last_name: "Bloggs",
-        permissions: [
-          {
-            organisation: "hmcts.moj",
-            roles: ["viewer"]
-          }
-        ],
-        links: {
-          profile: "http://localhost:5000/profile",
-          logout: "http://localhost:5000/users/sign_out"
-        }
-      }
-    }
-
     before do
       allow_any_instance_of(TaxTribunal::Login).to receive(:oauth_response).and_return(parsed_oauth_data)
     end
@@ -143,23 +143,29 @@ RSpec.describe TaxTribunal::Login do
         redirect_uri: 'http://localhost:3000/oauth/callback'
       ).and_return(token)
       expect(token).to receive(:get).with('/api/user_details').and_return(resp)
-      expect(resp).to receive(:body).and_return({ some_data: 'as json' }.to_json)
+      # Returning a 'real' response here as CircleCI (and only CircleCI so
+      # far) doesn't like the dummy response that was previously being used.
+      expect(resp).to receive(:body).and_return(parsed_oauth_data.to_json)
     end
 
     it 'GETs the user details from the moj-sso server' do
+      # Called indirectly as most of the interaction is buried in private
+      # methods.
       get 'oauth/callback?code=deadbeef'
     end
   end
 
   context 'OAuth2::Client JSON response' do
-    let(:json) { { some: 'JSON' }.to_json }
-
     before do
-      allow_any_instance_of(TaxTribunal::Login).to receive(:oauth_call).and_return(json)
+      # Returning a 'real' response here as CircleCI (and only CircleCI so
+      # far) doesn't like the dummy response that was previously being used.
+      allow_any_instance_of(TaxTribunal::Login).to receive(:oauth_call).and_return(parsed_oauth_data.to_json)
     end
 
     it 'gets parsed' do
-      expect(JSON).to receive(:parse).with(json, symbolize_names: true)
+      expect(JSON).to receive(:parse).with(parsed_oauth_data.to_json, symbolize_names: true).and_return(parsed_oauth_data)
+      # Called indirectly as most of the interaction is buried in private
+      # methods.
       get 'oauth/callback?code=deadbeef'
     end
   end
