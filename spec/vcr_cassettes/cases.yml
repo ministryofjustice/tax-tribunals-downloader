@@ -50,7 +50,7 @@ http_interactions:
       string: |-
         <?xml version="1.0" encoding="UTF-8"?>
         <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>tax-tribs-doc-upload-test</Name><Prefix>12345</Prefix><Marker></Marker><MaxKeys>1000</MaxKeys><EncodingType>url</EncodingType><IsTruncated>false</IsTruncated><Contents><Key>12345/</Key><LastModified>2016-10-07T13:02:37.000Z</LastModified><ETag>&quot;d41d8cd98f00b204e9800998ecf8427e&quot;</ETag><Size>0</Size><Owner><ID>18757d19fec1f74ed670c09f613e4fb6ab3b1fbf83e35a56616ee888d739dbbd</ID><DisplayName>aws</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>12345/testfile.docx</Key><LastModified>2016-10-07T13:02:57.000Z</LastModified><ETag>&quot;e627ebc230cb1bf9739a7054d7bb02dd&quot;</ETag><Size>4299</Size><Owner><ID>18757d19fec1f74ed670c09f613e4fb6ab3b1fbf83e35a56616ee888d739dbbd</ID><DisplayName>aws</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents></ListBucketResult>
-    http_version: 
+    http_version:
   recorded_at: Wed, 12 Oct 2016 15:29:25 GMT
 - request:
     method: get
@@ -102,6 +102,6 @@ http_interactions:
       string: |-
         <?xml version="1.0" encoding="UTF-8"?>
         <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>tax-tribs-doc-upload-test</Name><Prefix>junky</Prefix><Marker></Marker><MaxKeys>1000</MaxKeys><EncodingType>url</EncodingType><IsTruncated>false</IsTruncated></ListBucketResult>
-    http_version: 
+    http_version:
   recorded_at: Wed, 12 Oct 2016 15:29:25 GMT
 recorded_with: VCR 3.0.3
