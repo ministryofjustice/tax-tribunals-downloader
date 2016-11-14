@@ -1,5 +1,4 @@
 require 'oauth2'
-require 'pry'
 
 module TaxTribunal
   class Login < Downloader
