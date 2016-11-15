@@ -1,6 +1,6 @@
 FROM ministryofjustice/ruby:2.3.1-webapp-onbuild
 
-ENV PUMA_PORT 3000
+ENV PUMA_PORT 9292
 ENV RACK_ENV production
 
 RUN touch /etc/inittab
