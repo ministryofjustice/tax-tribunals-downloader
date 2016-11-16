@@ -5,15 +5,6 @@
 Tax Tribunal Downloader requires several environment variables to be set
 in order to run:
 
-
-### ACCESS_KEY_ID
-
-The AWS access key.
-
-### SECRET_ACCESS_KEY
-
-The AWS secret access key.
-
 ### BUCKET_NAME
 
 The S3 bucket where the uploads will be stored.
@@ -48,12 +39,21 @@ Downloader app (the path should normally be `/oauth/callback`).
 A callback parameter required by the OAuth2 `get_token` method.  It does
 not have any application here, but is otherwise required.
 
+### NOTE REGARDING AWS CREDENTIALS
+
+Credentials are not required if the downloader is run within AWS.
+Permissions are handled by IAM roles.  If you need to test the app
+locally, it will automatically use `ENV['AWS_ACCESS_KEY_ID']` and
+`ENV['AWS_SECRET_ACCESS_KEY']` if they are set.  They **should not** be
+set in the production environment.
+
 ## Testing
 
 To set the required environment variables for testing, just copy
 `.env.example` to `.env` and run your tests.  It uses the `dotenv` gem,
 which is setup and scoped to `spec_helper.rb`, which keeps it from
-polluting the other environments.
+polluting the other environments.  See the note regarding AWS
+credentials, above, as well.
 
 ## Development
 

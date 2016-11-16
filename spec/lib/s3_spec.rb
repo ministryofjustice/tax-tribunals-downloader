@@ -17,8 +17,6 @@ RSpec.describe TaxTribunal::S3 do
   end
 
   it 'fetches credentails from ENV' do
-    expect(ENV).to receive(:fetch).with('ACCESS_KEY_ID')
-    expect(ENV).to receive(:fetch).with('SECRET_ACCESS_KEY')
     expect(ENV).
       to receive(:fetch).
       with('AWS_REGION', 'eu-west-1').
