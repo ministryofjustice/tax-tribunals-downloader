@@ -31,6 +31,7 @@ module TaxTribunal
         session[:email] = resp[:email]
         session[:logout] = links[:logout]
         session[:profile] = links[:profile]
+        logger.info({ action: '/oauth/callback', status: 'success', message: resp }.to_json)
       else
         logger.info({ action: '/oauth/callback', status: 'failed', message: resp }.to_json)
       end
@@ -46,7 +47,6 @@ module TaxTribunal
         permission.fetch(:organisation).eql?(ORGANISATION) &&
           permission.fetch(:roles).include?(ROLE)
       }
-        logger.info({ action: 'authorise!', message: resp }.to_json)
         resp
       else
         {}

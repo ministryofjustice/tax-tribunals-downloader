@@ -138,7 +138,7 @@ RSpec.describe TaxTribunal::Login do
       let(:logger) { double(:logger) }
 
       it 'logs the request' do
-        expect(logger).to receive(:info).with({ action: 'authorise!', message: parsed_oauth_data }.to_json)
+        expect(logger).to receive(:info).once.with({ action: '/oauth/callback', status: 'success', message: parsed_oauth_data }.to_json)
         expect_any_instance_of(Sinatra::Helpers).to receive(:logger).and_return(logger)
         get 'oauth/callback?code=deadbeef'
       end
