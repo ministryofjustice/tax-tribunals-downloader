@@ -9,24 +9,30 @@ module TaxTribunal
 
     get '/login' do
       if session[:email].nil?
+        logger.info({ action: 'login', state: 'new', message: 'new login', requested: session[:return_to] })
         redirect oauth_client.auth_code.authorize_url(redirect_uri: CALLBACK_URI)
       else
+        logger.info({ action: 'login', state: 'existing', message: session[:email] })
         session[:already_logged_in] = "You are already logged in as #{session[:email]}."
         erb :root
       end
     end
 
     get '/logout' do
+      logger.info({ action: 'logout', message: session[:email] })
       session.destroy
       erb :root
     end
 
     get '/oauth/callback' do
       resp = authorise!(params[:code])
-      if resp
+      links = resp.fetch(:links, {})
+      if resp.fetch(:email, false) && links.fetch(:logout, false) && links.fetch(:profile, false)
         session[:email] = resp[:email]
-        session[:logout] = resp[:links][:logout]
-        session[:profile] = resp[:links][:profile]
+        session[:logout] = links[:logout]
+        session[:profile] = links[:profile]
+      else
+        logger.info({ action: '/oauth/callback', status: 'failed', message: resp }.to_json)
       end
       redirect session.delete(:return_to) || '/logout'
     end
@@ -40,7 +46,10 @@ module TaxTribunal
         permission.fetch(:organisation).eql?(ORGANISATION) &&
           permission.fetch(:roles).include?(ROLE)
       }
+        logger.info({ action: 'authorise!', message: resp }.to_json)
         resp
+      else
+        {}
       end
     end
 

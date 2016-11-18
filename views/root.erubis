@@ -2,8 +2,7 @@
 <h2><%= logged_in %></h2>
 <% end %>
 <% unless session[:email] %>
-<h2>You need to login</h2>
-<a href='/login'>Login</a>
+<h1>Please log in from the specific case page.</h1>
 <% else %>
 <a href='/logout'>Logout</a>
 <% end %>

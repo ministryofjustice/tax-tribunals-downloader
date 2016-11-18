@@ -36,6 +36,16 @@ RSpec.describe TaxTribunal::Login do
           to eq('http://localhost:5000/oauth/authorize?client_id=dummy+id&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Foauth%2Fcallback&response_type=code')
       end
     end
+
+    context 'logging' do
+      let(:logger) { double(:logger) }
+
+      it 'logs the request' do
+        expect(logger).to receive(:info).with({ action: 'login', state: 'existing', message: 'viewer@hmcts.gov.uk' })
+        expect_any_instance_of(Sinatra::Helpers).to receive(:logger).and_return(logger)
+        get '/login', {}, 'rack.session' => { email: 'viewer@hmcts.gov.uk' }
+      end
+    end
   end
 
   describe '/logout' do
@@ -49,7 +59,7 @@ RSpec.describe TaxTribunal::Login do
     it 'shows the user a new login link' do
       get '/logout', {}, 'rack.session' => user_session
       expect(last_response.body).
-        to include("<a href='/login'>Login</a>")
+        to include('Please log in from the specific case page.')
     end
 
     it 'clears the user session' do
@@ -121,6 +131,16 @@ RSpec.describe TaxTribunal::Login do
         follow_redirect!
         expect(last_request.url).
           to eq('http://example.org/logout')
+      end
+    end
+
+    context 'logging' do
+      let(:logger) { double(:logger) }
+
+      it 'logs the request' do
+        expect(logger).to receive(:info).with({ action: 'authorise!', message: parsed_oauth_data }.to_json)
+        expect_any_instance_of(Sinatra::Helpers).to receive(:logger).and_return(logger)
+        get 'oauth/callback?code=deadbeef'
       end
     end
   end
