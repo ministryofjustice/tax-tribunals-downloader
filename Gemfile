@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'aws-sdk'
 gem 'erubis'
+gem 'logstash-logger'
 gem 'oauth2'
 gem 'pry'
 gem 'puma'

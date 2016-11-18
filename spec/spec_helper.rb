@@ -1,3 +1,4 @@
+ENV['RACK_ENV'] = 'test'
 require 'dotenv'
 Dotenv.load
 
@@ -10,6 +11,7 @@ require_relative '../lib/tax_tribunal'
 require 'rspec'
 require 'rack/test'
 require 'vcr'
+require 'pry'
 
 ENV['RACK_ENV'] = 'test'
 
