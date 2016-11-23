@@ -4,8 +4,8 @@ module TaxTribunal
       # Using the session directly as encapsulating the session in an
       # authorised? helper method results in intermittent spec failures,
       # even when the email is not set on the session.
-      if session[:email]
-        logger.info({ action: 'download', state: 'authorised', user: session[:email], case: case_id })
+      if logged_in?
+        logger.info({ action: 'download', state: 'authorised', user: current_user.email, case: case_id })
         @case = Case.new(case_id)
       else
         logger.info({ action: 'download', state: 'unauthorised', case: case_id })

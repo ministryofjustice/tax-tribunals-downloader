@@ -19,5 +19,13 @@ module TaxTribunal
       set :views, "#{settings.root}/../../views"
       set :public_folder, "#{settings.root}/../../public"
     end
+
+    def current_user
+      @current_user ||= User.find(session.fetch(:auth_key))
+    end
+
+    def logged_in?
+      !current_user.nil?
+    end
   end
 end

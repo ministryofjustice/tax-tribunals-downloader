@@ -9,6 +9,10 @@ in order to run:
 
 The S3 bucket where the uploads will be stored.
 
+### USER_BUCKET_NAME
+
+The S3 bucket where user sessions are persisted.
+
 ### MOJSSO_ID
 
 The access key for the MoJ Single Sign On server (MOJ SSO).

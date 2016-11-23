@@ -1,6 +1,172 @@
 ---
 http_interactions:
 - request:
+    method: put
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/abc123
+    body:
+      encoding: UTF-8
+      string: '{"email":"bob@example.com","profile":"http://sso-profile-link","logout":"http://sso-logout-link"}'
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      Expect:
+      - 100-continue
+      Content-Md5:
+      - YCLi78oF9o/AUmfnJ+hJ6A==
+      X-Amz-Date:
+      - 20161122T164807Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - 53fc561804b41769f75093739133084d08be4d5fc9aecdf6501ef9a546d01c0f
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161122/eu-west-1/s3/aws4_request,
+        SignedHeaders=content-md5;host;x-amz-content-sha256;x-amz-date, Signature=98c1209a988a79a19974bfd7df7c2e1f1b83de0823cfa94fe704fc51c6c0e6e3
+      Content-Length:
+      - '97'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - DneLtzdjVAa2nW+CQheft+vym0+udbNb2iQEmcO/596FbrF4N2bdTvODave3P525WgHm2UttZ8E=
+      X-Amz-Request-Id:
+      - 16E483B6CEA808D5
+      Date:
+      - Tue, 22 Nov 2016 16:48:08 GMT
+      X-Amz-Expiration:
+      - expiry-date="Thu, 24 Nov 2016 00:00:00 GMT", rule-id="Expire Session"
+      Etag:
+      - '"6022e2efca05f68fc05267e727e849e8"'
+      Content-Length:
+      - '0'
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 16:48:07 GMT
+- request:
+    method: head
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/abc123
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20161122T164807Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161122/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=4ad9a0a27ec835eb599bdb3cb698b5d1a1de3fbbbf256d5b7c7db1b33b2d9dea
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - aQBgo3lJePDMRcdKWND3IZoU66gsUpCucr+0U8hCv95ZAmIGjiLlcZb2+XkJSveWp1Xh9e+4RAQ=
+      X-Amz-Request-Id:
+      - 3A533D7E55DD7450
+      Date:
+      - Tue, 22 Nov 2016 16:48:08 GMT
+      Last-Modified:
+      - Tue, 22 Nov 2016 16:48:08 GMT
+      X-Amz-Expiration:
+      - expiry-date="Thu, 24 Nov 2016 00:00:00 GMT", rule-id="Expire Session"
+      Etag:
+      - '"6022e2efca05f68fc05267e727e849e8"'
+      Accept-Ranges:
+      - bytes
+      Content-Type:
+      - ''
+      Content-Length:
+      - '97'
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 16:48:07 GMT
+- request:
+    method: get
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/abc123
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20161122T164807Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161122/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=a77e4de867cf4fd97ef5015d77cd5667c72550f0d6540b58f41e52426a076a9f
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - O3QlWCM6xRoqzn8oTZTvYBzsJ3zSmX0E7lhiVZPBKteRIJP5ep4OrO1FDtjE/CKIyAULPjXX8io=
+      X-Amz-Request-Id:
+      - 6548DD7090583FAE
+      Date:
+      - Tue, 22 Nov 2016 16:48:09 GMT
+      Last-Modified:
+      - Tue, 22 Nov 2016 16:48:08 GMT
+      X-Amz-Expiration:
+      - expiry-date="Thu, 24 Nov 2016 00:00:00 GMT", rule-id="Expire Session"
+      Etag:
+      - '"6022e2efca05f68fc05267e727e849e8"'
+      Accept-Ranges:
+      - bytes
+      Content-Type:
+      - ''
+      Content-Length:
+      - '97'
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: '{"email":"bob@example.com","profile":"http://sso-profile-link","logout":"http://sso-logout-link"}'
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 16:48:08 GMT
+- request:
     method: get
     uri: https://tax-tribs-doc-upload-test.s3-eu-west-1.amazonaws.com/?encoding-type=url&prefix=12345
     body:
@@ -14,14 +180,14 @@ http_interactions:
       User-Agent:
       - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
       X-Amz-Date:
-      - 20161012T152925Z
+      - 20161122T164808Z
       Host:
       - tax-tribs-doc-upload-test.s3-eu-west-1.amazonaws.com
       X-Amz-Content-Sha256:
       - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161012/eu-west-1/s3/aws4_request,
-        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=8dc2e87947024c36613041ea9918cf5e4eae7c3051de592f66fcf9b0bc22638d
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161122/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=b64594b371619a0776155edf299d9f9df1c2d0c469e39fd8601811d266401806
       Content-Length:
       - '0'
       Accept:
@@ -32,11 +198,11 @@ http_interactions:
       message: OK
     headers:
       X-Amz-Id-2:
-      - lVMtaSkyE7z788Cey8biw5C9VZD1w6VfYcvaOyO0xAtY4ElxEeioz6YCmMy31P8PyvjMrpbQJw4=
+      - NQ7rEjdKP/sZNdgMzBDh19QPV7GsioXF1W0X43oxdS1qlOijbTO1rGxCZ9Tj3+IjM4WJniwjPLo=
       X-Amz-Request-Id:
-      - D75E794F3040B577
+      - 455D33FC95D9D6E3
       Date:
-      - Wed, 12 Oct 2016 15:29:26 GMT
+      - Tue, 22 Nov 2016 16:48:09 GMT
       X-Amz-Bucket-Region:
       - eu-west-1
       Content-Type:
@@ -50,8 +216,8 @@ http_interactions:
       string: |-
         <?xml version="1.0" encoding="UTF-8"?>
         <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>tax-tribs-doc-upload-test</Name><Prefix>12345</Prefix><Marker></Marker><MaxKeys>1000</MaxKeys><EncodingType>url</EncodingType><IsTruncated>false</IsTruncated><Contents><Key>12345/</Key><LastModified>2016-10-07T13:02:37.000Z</LastModified><ETag>&quot;d41d8cd98f00b204e9800998ecf8427e&quot;</ETag><Size>0</Size><Owner><ID>18757d19fec1f74ed670c09f613e4fb6ab3b1fbf83e35a56616ee888d739dbbd</ID><DisplayName>aws</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>12345/testfile.docx</Key><LastModified>2016-10-07T13:02:57.000Z</LastModified><ETag>&quot;e627ebc230cb1bf9739a7054d7bb02dd&quot;</ETag><Size>4299</Size><Owner><ID>18757d19fec1f74ed670c09f613e4fb6ab3b1fbf83e35a56616ee888d739dbbd</ID><DisplayName>aws</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents></ListBucketResult>
-    http_version:
-  recorded_at: Wed, 12 Oct 2016 15:29:25 GMT
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 16:48:08 GMT
 - request:
     method: get
     uri: https://tax-tribs-doc-upload-test.s3-eu-west-1.amazonaws.com/?encoding-type=url&prefix=junky
@@ -66,14 +232,14 @@ http_interactions:
       User-Agent:
       - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
       X-Amz-Date:
-      - 20161012T152925Z
+      - 20161122T164808Z
       Host:
       - tax-tribs-doc-upload-test.s3-eu-west-1.amazonaws.com
       X-Amz-Content-Sha256:
       - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161012/eu-west-1/s3/aws4_request,
-        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=fd307fd94526669ef0b68c04ee8c665a9bc40a1147f5ff8c3c199dd85420a553
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161122/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=fc74e47a04e86064e44df361b2106e1edf6d15129f59f00c4cf19c0c5a84ac0a
       Content-Length:
       - '0'
       Accept:
@@ -84,11 +250,11 @@ http_interactions:
       message: OK
     headers:
       X-Amz-Id-2:
-      - Ir7F/8npV7RcIFLX5Poa7WemNG5Iv6H/Aw71FskYHEB2wg3+c6qqLQTa2p3P2h224qOf9nQl+l8=
+      - "/7V+erRx0DrvjHlQL7ZVBeW7MViS7LXwCa+iXYX/YjMhodyc5Vnt5skU2oPTEqrmMtaD+IuLiko="
       X-Amz-Request-Id:
-      - 1FB86BAA77E22673
+      - 87B05C1D8A16704F
       Date:
-      - Wed, 12 Oct 2016 15:29:26 GMT
+      - Tue, 22 Nov 2016 16:48:09 GMT
       X-Amz-Bucket-Region:
       - eu-west-1
       Content-Type:
@@ -102,6 +268,1878 @@ http_interactions:
       string: |-
         <?xml version="1.0" encoding="UTF-8"?>
         <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>tax-tribs-doc-upload-test</Name><Prefix>junky</Prefix><Marker></Marker><MaxKeys>1000</MaxKeys><EncodingType>url</EncodingType><IsTruncated>false</IsTruncated></ListBucketResult>
-    http_version:
-  recorded_at: Wed, 12 Oct 2016 15:29:25 GMT
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 16:48:08 GMT
+- request:
+    method: put
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/12345
+    body:
+      encoding: UTF-8
+      string: '{"email":"bob@example.com","profile":"http://sso-profile-link","logout":"http://sso-logout-link"}'
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      Expect:
+      - 100-continue
+      Content-Md5:
+      - YCLi78oF9o/AUmfnJ+hJ6A==
+      X-Amz-Date:
+      - 20161122T164808Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - 53fc561804b41769f75093739133084d08be4d5fc9aecdf6501ef9a546d01c0f
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161122/eu-west-1/s3/aws4_request,
+        SignedHeaders=content-md5;host;x-amz-content-sha256;x-amz-date, Signature=ad358997694bfd89e7e5c18223b62bd39fbab468cc68b910465dcf85006f0896
+      Content-Length:
+      - '97'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - ytXalbP9EecWTf0T6hbL/rd4XCUOXLYN5KnkxUrDAONM1LAhL5veKxqZvKy8qqUj2IhkqJvrj8o=
+      X-Amz-Request-Id:
+      - D2293196C27564A0
+      Date:
+      - Tue, 22 Nov 2016 16:48:09 GMT
+      X-Amz-Expiration:
+      - expiry-date="Thu, 24 Nov 2016 00:00:00 GMT", rule-id="Expire Session"
+      Etag:
+      - '"6022e2efca05f68fc05267e727e849e8"'
+      Content-Length:
+      - '0'
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 16:48:08 GMT
+- request:
+    method: head
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/12345
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20161122T164809Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161122/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=fc498420d2b0aea7bf70200b36e32f2860b2acf69777d2c40ec5cae8cbcb81e0
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - L/6H07G5E5TLAU+Sz1AFR2WAKpsNY6rBSEqsTgQ0FKwWfYcFsKV24jv0toqdqR23njv0rWvJgLE=
+      X-Amz-Request-Id:
+      - 655FB6C1AD41B609
+      Date:
+      - Tue, 22 Nov 2016 16:48:10 GMT
+      Last-Modified:
+      - Tue, 22 Nov 2016 16:48:09 GMT
+      X-Amz-Expiration:
+      - expiry-date="Thu, 24 Nov 2016 00:00:00 GMT", rule-id="Expire Session"
+      Etag:
+      - '"6022e2efca05f68fc05267e727e849e8"'
+      Accept-Ranges:
+      - bytes
+      Content-Type:
+      - ''
+      Content-Length:
+      - '97'
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 16:48:09 GMT
+- request:
+    method: get
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/12345
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20161122T164809Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161122/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=7fcee9c593062d75569fd5a3be64e29f52bdbf2378769e21aef742501afe7bb7
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - RGYrg3BYZj7bf3lCA6Yj81hiypJ431KYW8E11qk6LnlvD1/4B0DtICoPimuzIQdJmphwioRg7Oc=
+      X-Amz-Request-Id:
+      - 2E0C535CDAF3FE86
+      Date:
+      - Tue, 22 Nov 2016 16:48:10 GMT
+      Last-Modified:
+      - Tue, 22 Nov 2016 16:48:09 GMT
+      X-Amz-Expiration:
+      - expiry-date="Thu, 24 Nov 2016 00:00:00 GMT", rule-id="Expire Session"
+      Etag:
+      - '"6022e2efca05f68fc05267e727e849e8"'
+      Accept-Ranges:
+      - bytes
+      Content-Type:
+      - ''
+      Content-Length:
+      - '97'
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: '{"email":"bob@example.com","profile":"http://sso-profile-link","logout":"http://sso-logout-link"}'
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 16:48:09 GMT
+- request:
+    method: head
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/junky
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20161122T164809Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161122/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=3401f5abd10a577f97f91e19e96f59f865ddea9ddd16ee7d5ccd5e340a416677
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Amz-Request-Id:
+      - 9F516119BF6E9BFB
+      X-Amz-Id-2:
+      - jWBHh1uSdhnqFH9nUbfQekh04Sv45G0eRyjZFN3cDKJj6R/wHCVxOnCEe4TVZqK3L/r5ywV9YZQ=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 22 Nov 2016 16:48:09 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 16:48:09 GMT
+- request:
+    method: put
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/56789
+    body:
+      encoding: UTF-8
+      string: '{"email":"bob@example.com","profile":"http://sso-profile-link","logout":"http://sso-logout-link"}'
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      Expect:
+      - 100-continue
+      Content-Md5:
+      - YCLi78oF9o/AUmfnJ+hJ6A==
+      X-Amz-Date:
+      - 20161122T164809Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - 53fc561804b41769f75093739133084d08be4d5fc9aecdf6501ef9a546d01c0f
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161122/eu-west-1/s3/aws4_request,
+        SignedHeaders=content-md5;host;x-amz-content-sha256;x-amz-date, Signature=7b12c23ca721a9e14a6e6a84c0982c8d57562ea19b2573d6cfde6289cbc63b41
+      Content-Length:
+      - '97'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - ppdqo/iqwnnMjokj4VNtHKM6RhmARy0BTxfUUQv3XPJ++V62sGPN9qs1IPdUZrp+PfaaWsuWkyQ=
+      X-Amz-Request-Id:
+      - E765F6872278DE07
+      Date:
+      - Tue, 22 Nov 2016 16:48:10 GMT
+      X-Amz-Expiration:
+      - expiry-date="Thu, 24 Nov 2016 00:00:00 GMT", rule-id="Expire Session"
+      Etag:
+      - '"6022e2efca05f68fc05267e727e849e8"'
+      Content-Length:
+      - '0'
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 16:48:09 GMT
+- request:
+    method: head
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/45678
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20161122T164809Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161122/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=120bdb012202769738c36a706d53463b7ce59cb43840786283c94f56e6dbd44a
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Amz-Request-Id:
+      - 7BBCC9B29019C817
+      X-Amz-Id-2:
+      - 1ETlY/6G0dy11svRufMdymvCQEwFMAbpjzQ5tp1fSzGWFWdTi80SdC6GN2JUJE8EzHANXxzLOzs=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 22 Nov 2016 16:48:09 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 16:48:09 GMT
+- request:
+    method: head
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/56789
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20161122T164809Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161122/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=a0cf267604a9e5ffad436f4c2fc8654093e0a6f3273e4efe426ae079906d0530
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - mhqBJWm3neROraJyKhgxCPZRJRHIN0u59Ys9JKUdjpxCFBB0327tq39M3GVKxtGL8TExlhyrvJ4=
+      X-Amz-Request-Id:
+      - 163DBCC9BA7826EC
+      Date:
+      - Tue, 22 Nov 2016 16:48:10 GMT
+      Last-Modified:
+      - Tue, 22 Nov 2016 16:48:10 GMT
+      X-Amz-Expiration:
+      - expiry-date="Thu, 24 Nov 2016 00:00:00 GMT", rule-id="Expire Session"
+      Etag:
+      - '"6022e2efca05f68fc05267e727e849e8"'
+      Accept-Ranges:
+      - bytes
+      Content-Type:
+      - ''
+      Content-Length:
+      - '97'
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 16:48:09 GMT
+- request:
+    method: get
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/56789
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20161122T164809Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161122/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=8e50229c544cf361ce5d45ecbe01b2a72250de7eb92db8ce7a98d23934cbf524
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - "+c6Y7eHUkiXNY74Ifwd9fJpvyT+12Zsr21lqz0tLzWuNJTT1XOuaDff3nfuOpbVdwPviqhc8h4k="
+      X-Amz-Request-Id:
+      - D5B4459DC1CF913B
+      Date:
+      - Tue, 22 Nov 2016 16:48:10 GMT
+      Last-Modified:
+      - Tue, 22 Nov 2016 16:48:10 GMT
+      X-Amz-Expiration:
+      - expiry-date="Thu, 24 Nov 2016 00:00:00 GMT", rule-id="Expire Session"
+      Etag:
+      - '"6022e2efca05f68fc05267e727e849e8"'
+      Accept-Ranges:
+      - bytes
+      Content-Type:
+      - ''
+      Content-Length:
+      - '97'
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: '{"email":"bob@example.com","profile":"http://sso-profile-link","logout":"http://sso-logout-link"}'
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 16:48:09 GMT
+- request:
+    method: put
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/45678
+    body:
+      encoding: UTF-8
+      string: '{"email":"superadmin@example.com","profile":"http://localhost:5000/profile","logout":"http://localhost:5000/users/sign_out"}'
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      Expect:
+      - 100-continue
+      Content-Md5:
+      - w3PYWGdWMI90ZSUdlrPAGw==
+      X-Amz-Date:
+      - 20161122T165105Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - 5594e6abf47fb3424ecca2262b4ee8756ac4fe313f06d03bbc3af3a863c03716
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=dummy key/20161122/eu-west-1/s3/aws4_request,
+        SignedHeaders=content-md5;host;x-amz-content-sha256;x-amz-date, Signature=6415afcab0612a8ebee94be1e204a32b7dae55d5d8410df0b1866acb204a1600
+      Content-Length:
+      - '124'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      X-Amz-Request-Id:
+      - 754B202EBB71D5C0
+      X-Amz-Id-2:
+      - KtnyQzwXel3fc8tT0KDF87k7wqS0YKtwITj1ut49podv4eIAX0yJ/if7nRmuD9eG1Vem2H4FGuo=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 22 Nov 2016 16:51:05 GMT
+      Connection:
+      - close
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        <Error><Code>InvalidAccessKeyId</Code><Message>The AWS Access Key Id you provided does not exist in our records.</Message><AWSAccessKeyId>dummy key</AWSAccessKeyId><RequestId>754B202EBB71D5C0</RequestId><HostId>KtnyQzwXel3fc8tT0KDF87k7wqS0YKtwITj1ut49podv4eIAX0yJ/if7nRmuD9eG1Vem2H4FGuo=</HostId></Error>
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 16:51:05 GMT
+- request:
+    method: put
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/
+    body:
+      encoding: UTF-8
+      string: '{"email":"superadmin@example.com","profile":"http://localhost:5000/profile","logout":"http://localhost:5000/users/sign_out"}'
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      Expect:
+      - 100-continue
+      Content-Md5:
+      - w3PYWGdWMI90ZSUdlrPAGw==
+      X-Amz-Date:
+      - 20161122T170028Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - 5594e6abf47fb3424ecca2262b4ee8756ac4fe313f06d03bbc3af3a863c03716
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=dummy key/20161122/eu-west-1/s3/aws4_request,
+        SignedHeaders=content-md5;host;x-amz-content-sha256;x-amz-date, Signature=4603e88c36618711ade15b769478a7735ac740b38e2a2c52f24eb87d523bb6b3
+      Content-Length:
+      - '124'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      X-Amz-Request-Id:
+      - 185175D21BB85093
+      X-Amz-Id-2:
+      - VTjZVurwOXYW5pmaZdLnA6rmgdpqevCVe1xZF3GMMU9VRMOAw3UtEToDsAh5sn+27/hhD5He9WQ=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 22 Nov 2016 17:00:28 GMT
+      Connection:
+      - close
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        <Error><Code>InvalidAccessKeyId</Code><Message>The AWS Access Key Id you provided does not exist in our records.</Message><AWSAccessKeyId>dummy key</AWSAccessKeyId><RequestId>185175D21BB85093</RequestId><HostId>VTjZVurwOXYW5pmaZdLnA6rmgdpqevCVe1xZF3GMMU9VRMOAw3UtEToDsAh5sn+27/hhD5He9WQ=</HostId></Error>
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 17:00:28 GMT
+- request:
+    method: get
+    uri: https://tax-tribs-doc-upload-test.s3-eu-west-1.amazonaws.com/?encoding-type=url
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20161123T111543Z
+      Host:
+      - tax-tribs-doc-upload-test.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161123/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=770cd0c4764b30604885fa8c96989fbec3bd3a3306b60e188d1764f7133516c8
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - RUSIfwe3HuemJPhM4JEk0vGs0+XBEgcV24pP26diT9zmwk3XMToiVFixEWdfvb4txHqXfK+D9iE=
+      X-Amz-Request-Id:
+      - 189253A09BC8CC5F
+      Date:
+      - Wed, 23 Nov 2016 11:15:44 GMT
+      X-Amz-Bucket-Region:
+      - eu-west-1
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>tax-tribs-doc-upload-test</Name><Prefix></Prefix><Marker></Marker><MaxKeys>1000</MaxKeys><EncodingType>url</EncodingType><IsTruncated>false</IsTruncated><Contents><Key>12345/</Key><LastModified>2016-10-07T13:02:37.000Z</LastModified><ETag>&quot;d41d8cd98f00b204e9800998ecf8427e&quot;</ETag><Size>0</Size><Owner><ID>18757d19fec1f74ed670c09f613e4fb6ab3b1fbf83e35a56616ee888d739dbbd</ID><DisplayName>aws</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>12345/testfile.docx</Key><LastModified>2016-10-07T13:02:57.000Z</LastModified><ETag>&quot;e627ebc230cb1bf9739a7054d7bb02dd&quot;</ETag><Size>4299</Size><Owner><ID>18757d19fec1f74ed670c09f613e4fb6ab3b1fbf83e35a56616ee888d739dbbd</ID><DisplayName>aws</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>23456/</Key><LastModified>2016-10-07T13:26:09.000Z</LastModified><ETag>&quot;d41d8cd98f00b204e9800998ecf8427e&quot;</ETag><Size>0</Size><Owner><ID>18757d19fec1f74ed670c09f613e4fb6ab3b1fbf83e35a56616ee888d739dbbd</ID><DisplayName>aws</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>23456/testfile.docx</Key><LastModified>2016-10-07T13:26:29.000Z</LastModified><ETag>&quot;e627ebc230cb1bf9739a7054d7bb02dd&quot;</ETag><Size>4299</Size><Owner><ID>18757d19fec1f74ed670c09f613e4fb6ab3b1fbf83e35a56616ee888d739dbbd</ID><DisplayName>aws</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>users/</Key><LastModified>2016-11-21T14:02:51.000Z</LastModified><ETag>&quot;d41d8cd98f00b204e9800998ecf8427e&quot;</ETag><Size>0</Size><Owner><ID>18757d19fec1f74ed670c09f613e4fb6ab3b1fbf83e35a56616ee888d739dbbd</ID><DisplayName>aws</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>users/12345</Key><LastModified>2016-11-21T15:27:40.000Z</LastModified><ETag>&quot;a439fd52a2e3f42142c4a5bbd480d66d&quot;</ETag><Size>98</Size><Owner><ID>18757d19fec1f74ed670c09f613e4fb6ab3b1fbf83e35a56616ee888d739dbbd</ID><DisplayName>aws</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>users/23456</Key><LastModified>2016-11-21T16:45:02.000Z</LastModified><ETag>&quot;0601bd07e3e63a75fc6ad101bf5c5cc0&quot;</ETag><Size>85</Size><Owner><ID>18757d19fec1f74ed670c09f613e4fb6ab3b1fbf83e35a56616ee888d739dbbd</ID><DisplayName>aws</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>users/45678</Key><LastModified>2016-11-22T09:46:09.000Z</LastModified><ETag>&quot;c373d8586756308f7465251d96b3c01b&quot;</ETag><Size>124</Size><Owner><ID>18757d19fec1f74ed670c09f613e4fb6ab3b1fbf83e35a56616ee888d739dbbd</ID><DisplayName>aws</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents></ListBucketResult>
+    http_version: 
+  recorded_at: Wed, 23 Nov 2016 11:15:43 GMT
+- request:
+    method: head
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/%23%3CRack::Session::Abstract::SessionHash:0x007f924d9588a0%3E
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20161123T111546Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161123/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=a112681183bd9b58fb55fd8eab16494c414eb65558984e9e9b58e9261a7b379e
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Amz-Request-Id:
+      - 68D13EEAB165730A
+      X-Amz-Id-2:
+      - EsOvotxmCxb1EAxKbBZQ3fU0vAD/1R1Z4P8qphJ2KhUiQP2AMtf2ptRAQZwMatxWw6G/gS2P9ig=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 23 Nov 2016 11:15:46 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 23 Nov 2016 11:15:46 GMT
+- request:
+    method: head
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/auth_key
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20161123T111546Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161123/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=c90197c2c6cc3833f10777ae8e0c8a58ca045354e2a6231af61a8f15332de367
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Amz-Request-Id:
+      - 6043FE9E8810A4B4
+      X-Amz-Id-2:
+      - wXm/BF9WsWZCrYq3IoqEcMpZeuBJecBRixNpWVpjkdqgy6sskZL5crE9GfIqBLcqQJawn9LoOlk=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 23 Nov 2016 11:15:46 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 23 Nov 2016 11:15:47 GMT
+- request:
+    method: head
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/%23%3CRack::Session::Abstract::SessionHash:0x007f9a683d2cf0%3E
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20161123T111747Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161123/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=fcf5d6f5b94f9c01d1e28423f197c2116f140ec698f88d92df3a675608573cf0
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Amz-Request-Id:
+      - 230E15F4F4B73D94
+      X-Amz-Id-2:
+      - iWdXmOkiAoc4lazGoCDg5tbjAiX8itkWg5NDubETLxIZ9jYQpBXrG4G8BwcMQ81h/lLPsCmzisw=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 23 Nov 2016 11:17:47 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 23 Nov 2016 11:17:47 GMT
+- request:
+    method: head
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/%23%3CRack::Session::Abstract::SessionHash:0x007fc4f6772b18%3E
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20161123T112951Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161123/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=79f4b243749eee3a94ce76c52ac0803f8b81cc091f28f5d0a3c373b8abe49401
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Amz-Request-Id:
+      - ED68C30FCACD77A9
+      X-Amz-Id-2:
+      - U//Ne1AlbVjEqlavNGvvdlepf4MXZaGn+F2XQREtzU1WAlZ41IoP6GzcTm09nieVAx6kAUwmRKA=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 23 Nov 2016 11:29:50 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 23 Nov 2016 11:29:51 GMT
+- request:
+    method: head
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/%23%3CRack::Session::Abstract::SessionHash:0x007fe2942cae88%3E
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20161123T113139Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161123/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=a457ce8852fed9e789fc74cf9938f7bff9bdcd8ad853628bfd44ec7a01081b81
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Amz-Request-Id:
+      - 318D78FA23005C38
+      X-Amz-Id-2:
+      - Zjg/8leFCKagcJdT/e3KeEbJn6iyodwpQqo0eu/GYtQcnJY8toN8UMx1Re9yw10nO+wm90hsxwk=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 23 Nov 2016 11:31:38 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 23 Nov 2016 11:31:39 GMT
+- request:
+    method: head
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/%23%3CRack::Session::Abstract::SessionHash:0x007faf875661c8%3E
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20161123T113202Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161123/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=313daee44a669e1873de475ecc7d968d8ff8e5f7b73cf3c90a2745ff3da39402
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Amz-Request-Id:
+      - 9236F6D559B91E11
+      X-Amz-Id-2:
+      - SlSytC3ssp3GNIxrseml+1ZHpYYZmmmWekMbMx8Tz9E8WSaTUi+3cHfoD97G+Pcp5gcLNZnvSSw=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 23 Nov 2016 11:32:01 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 23 Nov 2016 11:32:02 GMT
+- request:
+    method: head
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/%23%3CRack::Session::Abstract::SessionHash:0x007faf88ca5fc8%3E
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20161123T113202Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161123/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=d24c19365d8d673aa267caf298efce201321dae65ab1ac591e45e897e6711678
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Amz-Request-Id:
+      - 7FBB830341A31E1A
+      X-Amz-Id-2:
+      - aa4YtN7yCQXKuXmlc4fbe/krG/DJPClmv3ZPhTCKccOEMnENl7jnftUTJi5kpW5XnS/6xwH4Tzo=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 23 Nov 2016 11:32:02 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 23 Nov 2016 11:32:02 GMT
+- request:
+    method: head
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/%23%3CRack::Session::Abstract::SessionHash:0x007fd8557ac0f8%3E
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20161123T113315Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161123/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=487b38424d6c69ebd25553b74099e4cc89bfd02f34c05a3e878958dde0c789d5
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Amz-Request-Id:
+      - DD572DC3F1C92720
+      X-Amz-Id-2:
+      - fy9xYfprbuvcp9KAzkXWySHfaDNH391xNBOapYFlU32Pat958/MgpLyHa8DN0aWOgqwJQ9YM3o4=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 23 Nov 2016 11:33:14 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 23 Nov 2016 11:33:15 GMT
+- request:
+    method: head
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/%23%3CRack::Session::Abstract::SessionHash:0x007fd8576f3268%3E
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20161123T113315Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161123/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=caa74e6c4de676443deb19ba275100f7232915fdd825ceec1904cc146c884d29
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Amz-Request-Id:
+      - 3829E3BA85C156C4
+      X-Amz-Id-2:
+      - rtSfZrcxZ8o4hfrt7e1MoxnRspywx5dcZgoHNToJZ7uGmzKT0PKWCoBJ6P4mlqhkvUi+ta9bTEU=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 23 Nov 2016 11:33:15 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 23 Nov 2016 11:33:15 GMT
+- request:
+    method: head
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/%23%3CRack::Session::Abstract::SessionHash:0x007fc700949a70%3E
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20161123T113500Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161123/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=20a53f964933565d9c2e30d08522f48233d2b3dc1b74b3235be703ae1d95c2b8
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Amz-Request-Id:
+      - 060CAD741F7619C4
+      X-Amz-Id-2:
+      - jjZhzLiOuhtRC7N+FMbtK4ybgSdgw6dcIQAU+1qv+7+aaX/qMAGekUPWcBzJReuy+oUyBo63nSo=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 23 Nov 2016 11:34:59 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 23 Nov 2016 11:35:00 GMT
+- request:
+    method: head
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/%23%3CRack::Session::Abstract::SessionHash:0x007fd29230b530%3E
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20161123T113646Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161123/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=72f1e8857b989723fc7ad44be64122c6e0c513ea7a28ef1d621216415babbeb6
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Amz-Request-Id:
+      - E4937BD9CBE1F134
+      X-Amz-Id-2:
+      - EXYtm2xNdi+bJFFTwyqiRoJvAc38KV5OVpEI65Dtslc5Vo8uV5lnx9gzh5/pFmlVag1sq3llKMw=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 23 Nov 2016 11:36:45 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 23 Nov 2016 11:36:46 GMT
+- request:
+    method: head
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/%23%3CRack::Session::Abstract::SessionHash:0x007fc08789eac8%3E
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20161123T113751Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161123/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=966ca009628e523c3d2762876923d899635cfefe1181d9d4cc4b857d8b8f26ef
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Amz-Request-Id:
+      - 3CE04D566EABB562
+      X-Amz-Id-2:
+      - Q5ZUbzEK04Hv/jx+CO5dCGEwOB01SmvGDHjrmMu3eKqFXXjMDowXEkN1k8HMEjD2E33RSMhMcFg=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 23 Nov 2016 11:37:51 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 23 Nov 2016 11:37:51 GMT
+- request:
+    method: head
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/%23%3CRack::Session::Abstract::SessionHash:0x007fa85392be10%3E
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20161123T113910Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161123/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=3b2dc03fa0bd7f7acdf37e8496a202000bc169b2a50a0ac55390b92d1533ef1e
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Amz-Request-Id:
+      - D92ED0E957E44F73
+      X-Amz-Id-2:
+      - ZZEg4Vi02A5lxO7nYvi4bN9ABUdYua1JRveh+C2pyIg4d/FA5rhk1hZJo8ytOrtxKyOkVlAtZ+M=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 23 Nov 2016 11:39:10 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 23 Nov 2016 11:39:10 GMT
+- request:
+    method: head
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/%23%3CRack::Session::Abstract::SessionHash:0x007ff47f899970%3E
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20161123T114205Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161123/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=90feaa2264d7093e0cba64faac6826500600243594386d8a905884643e184468
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Amz-Request-Id:
+      - F05F4488E8DAF440
+      X-Amz-Id-2:
+      - Ft1y1SA6qSfBzP4rCdUgz5SBrBPS/u7REb6MRo7BafNAjwytRI7O4MSOHl+B+0Jh9VznyAYQeAA=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 23 Nov 2016 11:42:05 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 23 Nov 2016 11:42:05 GMT
+- request:
+    method: head
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/%23%3CRack::Session::Abstract::SessionHash:0x007ff47a2eb280%3E
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20161123T114205Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161123/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=87924d1d946d88b65a2678e16c112acd32bb03d5b178b21bea1e4155bb65f428
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Amz-Request-Id:
+      - 0F1E55190417FF75
+      X-Amz-Id-2:
+      - w9NuH3fyEC76UOOmKeACCZTiiJ9UkpJp2gDSRQi+lQyPsIQ+LlgAU9tmP0lrYYw1oUyQtfkfsIM=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 23 Nov 2016 11:42:04 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 23 Nov 2016 11:42:05 GMT
+- request:
+    method: head
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/%23%3CRack::Session::Abstract::SessionHash:0x007fae00248438%3E
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20161123T114319Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161123/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=a5f797c696bf869c228d92969e270bd82b34f616bd9ae124823b51b687810487
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Amz-Request-Id:
+      - E7B50B587A18E247
+      X-Amz-Id-2:
+      - U9SXR5QQ8fRGXg2GN/6Mv/nY8VrObCBsm0+RUTxP3/rhKvlmwUXh6I+7TTlC7oxaNr3PcR99erE=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 23 Nov 2016 11:43:18 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 23 Nov 2016 11:43:19 GMT
+- request:
+    method: head
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/%23%3CRack::Session::Abstract::SessionHash:0x007fd7b441b070%3E
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20161123T114725Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161123/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=a9ff1b9bc550441f481f50698b0724e866ea832e575a8ea0cee31c1c04c0847c
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Amz-Request-Id:
+      - F0EDE7FB4DE746E3
+      X-Amz-Id-2:
+      - S0KoFaY18+KHIq6QbipPvcOFujvp3mQddxLOoiIgBO42qHU2VXUqXylPYwSQK3ofvIiJ961MSz4=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 23 Nov 2016 11:47:25 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 23 Nov 2016 11:47:25 GMT
+- request:
+    method: head
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/%23%3CRack::Session::Abstract::SessionHash:0x007fd7ba1c9168%3E
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20161123T114726Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161123/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=11a69c73141607d23582c50c855e1e29e21751f55160b8b58248475bead4fe51
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Amz-Request-Id:
+      - D9F24CEC625B1375
+      X-Amz-Id-2:
+      - udbO39lEE+YQSgUjC4Bja9GZVYoqsVbWeDtlDL1R6of0739qCTh0fOawRHh77z/1T0vmn0VqosY=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 23 Nov 2016 11:47:26 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 23 Nov 2016 11:47:26 GMT
+- request:
+    method: put
+    uri: https://s3-eu-west-1.amazonaws.com/USER_BUCKET_NAME/users/12345
+    body:
+      encoding: UTF-8
+      string: '{"email":"bob@example.com","profile":"http://sso-profile-link","logout":"http://sso-logout-link"}'
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      Expect:
+      - 100-continue
+      Content-Md5:
+      - YCLi78oF9o/AUmfnJ+hJ6A==
+      X-Amz-Date:
+      - 20161123T114826Z
+      Host:
+      - s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - 53fc561804b41769f75093739133084d08be4d5fc9aecdf6501ef9a546d01c0f
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161123/eu-west-1/s3/aws4_request,
+        SignedHeaders=content-md5;host;x-amz-content-sha256;x-amz-date, Signature=4ab738738b2a44fbebd84b68941010d6a543cfb7bc8d14a8822f50a84dc64bc2
+      Content-Length:
+      - '97'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Amz-Request-Id:
+      - 11CB7825DEEEFEF6
+      X-Amz-Id-2:
+      - "+sG1WLdMAaDbQ5WrAVmrGsLFNebgJNvmCphdm/ouIbvYChLKeWvgT9eUiFhRuT8dBq5E2wFScAU="
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 23 Nov 2016 11:48:26 GMT
+      Connection:
+      - close
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        <Error><Code>NoSuchBucket</Code><Message>The specified bucket does not exist</Message><BucketName>USER_BUCKET_NAME</BucketName><RequestId>11CB7825DEEEFEF6</RequestId><HostId>+sG1WLdMAaDbQ5WrAVmrGsLFNebgJNvmCphdm/ouIbvYChLKeWvgT9eUiFhRuT8dBq5E2wFScAU=</HostId></Error>
+    http_version: 
+  recorded_at: Wed, 23 Nov 2016 11:48:27 GMT
+- request:
+    method: head
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20161123T114830Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161123/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=fe6b9050736817b5c543da52b0f946682a493d331e4345ded96209e33cf5b4d1
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - IQDwG9TT2x2IQi4jMphSoveaoMMbjpXf3RFF/5WE97k/m1PV3X8bE/a65EBN/WmF/kVzSGzTN5w=
+      X-Amz-Request-Id:
+      - C0579E8CD90F7CB1
+      Date:
+      - Wed, 23 Nov 2016 11:48:31 GMT
+      Last-Modified:
+      - Tue, 22 Nov 2016 14:58:48 GMT
+      X-Amz-Expiration:
+      - expiry-date="Thu, 24 Nov 2016 00:00:00 GMT", rule-id="Expire Session"
+      Etag:
+      - '"d41d8cd98f00b204e9800998ecf8427e"'
+      X-Amz-Server-Side-Encryption:
+      - AES256
+      Accept-Ranges:
+      - bytes
+      Content-Type:
+      - binary/octet-stream
+      Content-Length:
+      - '0'
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 23 Nov 2016 11:48:30 GMT
+- request:
+    method: get
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20161123T114830Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161123/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=8c00a4c01f45a4613e69c9f155791ecccb06a9c95dcb3962c4b6846c12ffa48c
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - FASMM+GLHQgok9cEvzprGL86QuzkDzpoNY96/0n4/JrZVsJvkuQqWVrr9vCXm9R08WiPG+pMKD8=
+      X-Amz-Request-Id:
+      - 8DB7C557A5E08DBF
+      Date:
+      - Wed, 23 Nov 2016 11:48:31 GMT
+      Last-Modified:
+      - Tue, 22 Nov 2016 14:58:48 GMT
+      X-Amz-Expiration:
+      - expiry-date="Thu, 24 Nov 2016 00:00:00 GMT", rule-id="Expire Session"
+      Etag:
+      - '"d41d8cd98f00b204e9800998ecf8427e"'
+      X-Amz-Server-Side-Encryption:
+      - AES256
+      Accept-Ranges:
+      - bytes
+      Content-Type:
+      - binary/octet-stream
+      Content-Length:
+      - '0'
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 23 Nov 2016 11:48:30 GMT
+- request:
+    method: head
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/TaxTribunal::User
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20161123T114833Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161123/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=397bd06cc45bcac79942fe4efb87676f6b7f2b16d8967cb79bd9a211aef65b2c
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Amz-Request-Id:
+      - 32CD0DFE9D0A85F7
+      X-Amz-Id-2:
+      - vXMGIXCvl7cigRX0XZpfrXnzcm69luMP6uvRqxTSz9JfL5k2ET0ZqdoSzvXEMYGg/P94MoWxDoI=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 23 Nov 2016 11:48:32 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 23 Nov 2016 11:48:33 GMT
+- request:
+    method: get
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/junky
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20161123T114833Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161123/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=f6dd2b4f512a22358d5e20e595f8d1225c56b209cb1283e5446db867052e6da6
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Amz-Request-Id:
+      - 4B3C3BB66A8AB0C5
+      X-Amz-Id-2:
+      - yQOcOwMD+rYfUjDpLh+Dbbe5wUrx0I0uoaJE7hMHZwAqsGjPCEJIyf7zevFImXNevmOzm0qcUJo=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 23 Nov 2016 11:48:33 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        <Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><Key>users/junky</Key><RequestId>4B3C3BB66A8AB0C5</RequestId><HostId>yQOcOwMD+rYfUjDpLh+Dbbe5wUrx0I0uoaJE7hMHZwAqsGjPCEJIyf7zevFImXNevmOzm0qcUJo=</HostId></Error>
+    http_version: 
+  recorded_at: Wed, 23 Nov 2016 11:48:33 GMT
+- request:
+    method: get
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/TaxTribunal::User
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20161123T114836Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161123/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=ab88aec082d7aa9826f20c2467c40ac702da7cb5ed488e3cfb80dfe3800aadab
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Amz-Request-Id:
+      - 959602A79BE52F58
+      X-Amz-Id-2:
+      - Vv5EhEXYY3pMw09TX3E7WTQHAXBE6/4Lb95kziUK4GjM8egj16ztIbgmWBFF8VpLn2ZGwbEfIS8=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 23 Nov 2016 11:48:35 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        <Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><Key>users/TaxTribunal::User</Key><RequestId>959602A79BE52F58</RequestId><HostId>Vv5EhEXYY3pMw09TX3E7WTQHAXBE6/4Lb95kziUK4GjM8egj16ztIbgmWBFF8VpLn2ZGwbEfIS8=</HostId></Error>
+    http_version: 
+  recorded_at: Wed, 23 Nov 2016 11:48:36 GMT
+- request:
+    method: head
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/%23%3CRack::Session::Abstract::SessionHash:0x007fd80eaa2308%3E
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20161123T115100Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161123/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=ac7fa64f61d3d0f044811e20c5f83b37f035b58aa57e4c1b0ab2085f2575cd9f
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Amz-Request-Id:
+      - 9ABFD23D499C0092
+      X-Amz-Id-2:
+      - Iul5lZlbK9e+5ImG06YBnlFP44TqKwkPqk3U8ZXZ8ctoP6Q6+VoN/aHAI7USdJWUVcWoO/Nm19M=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 23 Nov 2016 11:51:00 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 23 Nov 2016 11:51:00 GMT
+- request:
+    method: head
+    uri: https://taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com/users/%23%3CRack::Session::Abstract::SessionHash:0x007fe72aaf9010%3E
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.6.6 ruby/2.3.1 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20161123T134424Z
+      Host:
+      - taxtribs-file-download-auth-dev.s3-eu-west-1.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAIGRJ3P2V573WESQQ/20161123/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=dd8f016c47cbe2baee9b362dda2ce97e79b89a7553a272127d3807565218932c
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Amz-Request-Id:
+      - B903A19F187E1FCA
+      X-Amz-Id-2:
+      - B2cIg0ZbWWaakVveS0csWo9o8rlVU4csDZXtvyaH5BLFIkh8k4sbrmynubSWFRlhDlxEYV/+8Yw=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 23 Nov 2016 13:44:23 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 23 Nov 2016 13:44:24 GMT
 recorded_with: VCR 3.0.3
