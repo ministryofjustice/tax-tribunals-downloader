@@ -1,6 +1,8 @@
 require 'sinatra'
+require 'securerandom'
 require_relative 'tax_tribunal/downloader'
 require_relative 'tax_tribunal/case'
+require_relative 'tax_tribunal/user'
 require_relative 'tax_tribunal/file'
 require_relative 'tax_tribunal/download'
 require_relative 'tax_tribunal/login'
