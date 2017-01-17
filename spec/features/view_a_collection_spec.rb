@@ -20,7 +20,7 @@ RSpec.describe TaxTribunal::Download do
 
 	describe '#show' do
 		it 'links to the cases' do
-      expect(last_response.body).to include("Files for #{case_1}")
+      expect(last_response.body).to include('Appeal or application documents')
       expect(last_response.body).to include('testfile.docx')
 		end
 

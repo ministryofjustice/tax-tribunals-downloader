@@ -1,1 +1,5 @@
-<h1>Please log in from the specific case page.</h1>
+<div class="grid-row">
+  <div class="column-full">
+    <h2 class="heading-medium">Please log in from the specific case page.</h2>
+  </div>
+</div>
