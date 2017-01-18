@@ -26,7 +26,7 @@ RSpec.describe TaxTribunal::Download do
 
 		it 'links to the files using s3 tokenzied links with short expiry times' do
       expect(last_response.body).to match(
-				%r{tax-tribs-doc-upload-test.+amazonaws.+\/12345\/testfile.docx.+X-Amz-Credential.+X-Amz-Expires=60.+X-Amz-Signature}
+				%r{tax-tribs-doc-upload-test.+amazonaws.+\/12345\/testfile.docx.+X-Amz-Credential.+X-Amz-Expires=3600.+X-Amz-Signature}
 			)
 		end
 	end
