@@ -20,13 +20,13 @@ RSpec.describe TaxTribunal::Download do
 
 	describe '#show' do
 		it 'links to the cases' do
-      expect(last_response.body).to include("Files for #{case_1}")
+      expect(last_response.body).to include('Appeal or application documents')
       expect(last_response.body).to include('testfile.docx')
 		end
 
 		it 'links to the files using s3 tokenzied links with short expiry times' do
       expect(last_response.body).to match(
-				%r{tax-tribs-doc-upload-test.+amazonaws.+\/12345\/testfile.docx.+X-Amz-Credential.+X-Amz-Expires=60.+X-Amz-Signature}
+				%r{tax-tribs-doc-upload-test.+amazonaws.+\/12345\/testfile.docx.+X-Amz-Credential.+X-Amz-Expires=3600.+X-Amz-Signature}
 			)
 		end
 	end

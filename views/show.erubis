@@ -1,11 +1,31 @@
-<% if @case %>
-<h1>Files for <%= @case.case_id %></h1>
-<ul>
-<% @case.files.each do |file| %>
-  <li><a href='<%= file.s3_url %>'><%= file.key %></a></li>
-<% end %>
-</ul>
-<a href='/logout'>Logout</a>
-<% else %>
-<h1>You need to <a href='/login'>Login</a></h1>
-<% end %>
+<div class="grid-row">
+  <% if @case.nil? %>
+    <div class="column-full">
+      <h2 class="heading-medium">You need to <a href='/login'>Login</a></h2>
+    </div>
+  <% else %>
+    <div class="column-two-thirds">
+      <h1 class="heading-large">Appeal or application documents</h1>
+      <p class="lede"><strong>Documents</strong></p>
+
+      <ul class="list list-bullet">
+        <% @case.files.each do |file| %>
+          <li><a href="<%= file.s3_url %>" title="<%= file.name %>"><%= file.name %></a></li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="column-one-third">
+      <aside class="govuk-related-items">
+        <h2 class="heading-medium">Downloading files on a PC</h2>
+        <nav role="navigation">
+          <ul class="font-xsmall">
+            <li>Right mouse click the link and select "Save Target As."</li>
+            <li>Follow prompts to save the file to your location.</li>
+            <li><a href='/logout'>Logout</a></li>
+          </ul>
+        </nav>
+      </aside>
+    </div>
+  <% end %>
+</div>

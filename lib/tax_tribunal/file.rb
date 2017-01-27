@@ -2,7 +2,7 @@ require_relative 's3'
 
 module TaxTribunal
   class File
-    EXPIRES_IN = 60
+    EXPIRES_IN = 3600 # seconds
 
     include TaxTribunal::S3
 
@@ -14,6 +14,10 @@ module TaxTribunal
 
     def s3_url
       obj.presigned_url(:get, expires_in: EXPIRES_IN)
+    end
+
+    def name
+      key.partition('/').last
     end
 
     private
