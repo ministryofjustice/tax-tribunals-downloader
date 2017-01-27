@@ -11,8 +11,8 @@ ENV MOJSSO_ROLE               replace_this_at_build_time
 ENV MOJSSO_SECRET             replace_this_at_build_time
 ENV MOJSSO_TOKEN_REDIRECT_URI replace_this_at_build_time
 ENV MOJSSO_URL                replace_this_at_build_time
-ENV USER_BUCKET_NAME          replace_this_at_build_time
 ENV SENTRY_DSN                replace_this_at_build_time
+ENV USER_BUCKET_NAME          replace_this_at_build_time
 
 RUN touch /etc/inittab
 
