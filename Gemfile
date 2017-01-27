@@ -7,6 +7,7 @@ gem 'oauth2'
 gem 'pry'
 gem 'puma'
 gem 'rake'
+gem 'sentry-raven'
 gem 'sinatra'
 gem 'sinatra-router'
 
