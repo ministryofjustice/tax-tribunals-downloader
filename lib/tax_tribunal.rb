@@ -11,7 +11,7 @@ require_relative 'tax_tribunal/root'
 module TaxTribunal
   class App < Sinatra::Base
     use Login
-    use Download
     use Root
+    use Download
   end
 end
