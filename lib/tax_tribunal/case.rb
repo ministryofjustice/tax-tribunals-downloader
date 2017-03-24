@@ -23,7 +23,7 @@ module TaxTribunal
       @files ||= objects(prefix: case_id).
         map(&:key).
         reject { |o| o.match(DIRECTORY) }.
-        map { |o|
+        each { |o|
           File.new(o)
         }
     end

@@ -7,8 +7,11 @@ module TaxTribunal
 
     def self.find(uuid)
       return nil if uuid.nil? || uuid.empty?
-      if user_obj(uuid).exists?
-        data = JSON.parse(user_obj(uuid).get.body.read, symbolize_names: true)
+      # As this confused me on returning to it; This is the
+      # Aws::S3::Object#exists? method, not the ActiveRecord/ActiveResource
+      # method.
+      if (user = user_obj(uuid))
+        data = JSON.parse(user.get.body.read, symbolize_names: true)
         OpenStruct.new(
           id: uuid,
           email: data.fetch(:email),

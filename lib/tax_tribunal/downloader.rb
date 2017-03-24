@@ -10,7 +10,6 @@ module TaxTribunal
       enable :logging
       use Rack::CommonLogger, LogStashLogger.new(type: :stdout)
     end
-    # :nocov:
 
     configure do
       enable :sessions
@@ -19,6 +18,7 @@ module TaxTribunal
       set :views, "#{settings.root}/../../views"
       set :public_folder, "#{settings.root}/../../public"
     end
+    # :nocov:
 
     def current_user
       @current_user ||= User.find(session.fetch(:auth_key))

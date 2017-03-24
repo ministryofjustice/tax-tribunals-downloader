@@ -1,54 +1,103 @@
 require 'spec_helper'
 
 RSpec.describe TaxTribunal::User do
-  # WARNING Magic:
-  # The S3 bucket `tax-tribs-doc-upload-test` contains the example file
-  # `users/12345`. The interaction is recorded into the main vcr cassette,
-  # `cases.yml`.  Add new episodes or re-record as needed.  Ultimately, it was
-  # simpler to do it this way than it was to try and stub out the full aws-sdk
-  # S3 interaction.
+  subject { described_class }
+  let(:bucket) { double(:bucket) }
+
+  before do
+    allow(described_class).to receive(:bucket).and_return(bucket)
+    allow(ENV).to receive(:fetch).at_least(:once)
+  end
+
+  it 'uses the USER_BUCKET ENV variable for persistence' do
+    subject.bucket_name
+    expect(ENV).to have_received(:fetch).with('USER_BUCKET_NAME')
+  end
 
   describe '.find' do
-    # This ensures the record exists on the S3 test bucket if you need to re-record the cassette.
+    let(:parsed_json) { double(:parsed_json).as_null_object }
+
     before do
-      TaxTribunal::User.create('12345', email: 'bob@example.com', profile: 'http://sso-profile-link', logout: 'http://sso-logout-link')
+      allow(JSON).to receive(:parse).and_return(parsed_json)
+      allow(OpenStruct).to receive(:new)
     end
 
-    it 'returns a populated openstruct if the key exists' do
-      expect(described_class.find('12345')).
-        to eq(OpenStruct.new(id: '12345', email: 'bob@example.com', profile: 'http://sso-profile-link', logout: 'http://sso-logout-link'))
+    it 'returns nil if it is called with nil' do
+      expect(subject.find(nil)).to be_nil
     end
 
-    it 'returns nil if the key does not exist' do
-      expect(described_class.find('junky')).to be_nil
+    it 'returns nil if it is called with an empty string' do
+      expect(subject.find('')).to be_nil
     end
 
-    it 'works with nil' do
-      expect(described_class.find(nil)).to be_nil
-    end
+    context 'user is persisted' do
+      let(:body) { double(:body, read: double(:read)) }
+      let(:get) { double(:s3_get, body: body) }
+      let(:object) { double(:object, get: get) }
 
-    it 'works with empty strings' do
-      expect(described_class.find('')).to be_nil
+      before do
+        allow(bucket).to receive(:object).and_return(object)
+        subject.find('ABC123')
+      end
+
+      it 'checks to see if the user record is already persisted' do
+        # This may not work with mutation testing:
+        # https://relishapp.com/rspec/rspec-mocks/docs/basics/spies
+        expect(bucket).to have_received(:object).with('users/ABC123')
+      end
+
+      it 'calls .read on the body (required for s3)' do
+        expect(body).to have_received(:read)
+      end
+
+      it 'symbolizes the JSON names (keys)' do
+        expect(JSON).to have_received(:parse).with(anything, symbolize_names: true)
+      end
+
+      it 'parses the persisted record' do
+        expect(JSON).to have_received(:parse)
+      end
+
+      context 'creates an OpenStruct object representing the user' do
+        it 'has the id' do
+          expect(OpenStruct).to have_received(:new).with(hash_including(id: 'ABC123'))
+        end
+
+        it 'has the email' do
+          expect(OpenStruct).to have_received(:new).with(hash_including(email: anything))
+          expect(parsed_json).to have_received(:fetch).with(:email)
+        end
+
+        it 'has the profile link' do
+          expect(OpenStruct).to have_received(:new).with(hash_including(profile: anything))
+          expect(parsed_json).to have_received(:fetch).with(:profile)
+        end
+
+        it 'has the logout link' do
+          expect(OpenStruct).to have_received(:new).with(hash_including(logout: anything))
+          expect(parsed_json).to have_received(:fetch).with(:logout)
+        end
+      end
     end
   end
 
   describe '.create' do
-    let(:user_obj) { double(:user_obj) }
-    let(:bucket) { double(:bucket) }
+    let(:object) { double.as_null_object }
+    let(:params) { { email: 'bob@test.com', profile: '<profile url>', logout: '<logout url>' } }
 
-    # Finding the record after the create call will generate a false positive
-    # owing to the fact that the aws-sdk call is recorded. This ensures aws-sdk
-    # is called with the correct parameters.
-    it 'puts a new record to the bucket' do
-      expect(user_obj).to receive(:put).with(body: "{\"email\":\"suzy@test.com\",\"profile\":\"http://sso-profile\",\"logout\":\"http://sso-logout\"}")
-      expect(described_class).to receive(:user_obj).and_return(user_obj)
-      described_class.create('23456', email: 'suzy@test.com', logout: 'http://sso-logout', profile: 'http://sso-profile')
+    before do
+      allow(bucket).to receive(:object).and_return(object)
+      subject.create('ABC123', params)
     end
 
-    it 'puts the record using the correct key (mutation)' do
-      expect(bucket).to receive(:object).with('users/23456').and_return(user_obj.as_null_object)
-      expect(described_class).to receive(:bucket).and_return(bucket)
-      described_class.create('23456', email: 'suzy@test.com', logout: 'http://sso-logout', profile: 'http://sso-profile')
+    it 'instantiates the new user object' do
+      # This may not work with mutation testing:
+      # https://relishapp.com/rspec/rspec-mocks/docs/basics/spies
+      expect(bucket).to have_received(:object).with('users/ABC123')
+    end
+
+    it 'persists the user object' do
+      expect(object).to have_received(:put).with({ body: params.to_json })
     end
   end
 end
