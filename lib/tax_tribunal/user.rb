@@ -7,10 +7,10 @@ module TaxTribunal
 
     def self.find(uuid)
       return nil if uuid.nil? || uuid.empty?
-      # As this confused me on returning to it; This is the
-      # Aws::S3::Object#exists? method, not the ActiveRecord/ActiveResource
-      # method.
-      if (user = user_obj(uuid))
+      # This is the Aws::S3::Object#exists? method, not the
+      # ActiveRecord/ActiveResource method. It tests that object exsits in the
+      # s3 bucket, not that object exists locally.
+      if (user = user_obj(uuid)).exists?
         data = JSON.parse(user.get.body.read, symbolize_names: true)
         OpenStruct.new(
           id: uuid,

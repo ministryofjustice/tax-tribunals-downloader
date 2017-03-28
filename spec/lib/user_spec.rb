@@ -33,7 +33,7 @@ RSpec.describe TaxTribunal::User do
     context 'user is persisted' do
       let(:body) { double(:body, read: double(:read)) }
       let(:get) { double(:s3_get, body: body) }
-      let(:object) { double(:object, get: get) }
+      let(:object) { double(:object, get: get, exists?: true) }
 
       before do
         allow(bucket).to receive(:object).and_return(object)
@@ -41,8 +41,8 @@ RSpec.describe TaxTribunal::User do
       end
 
       it 'checks to see if the user record is already persisted' do
-        # This may not work with mutation testing:
-        # https://relishapp.com/rspec/rspec-mocks/docs/basics/spies
+        # This is mocking the Aws::S3 method and is required.
+        expect(object).to have_received(:exists?)
         expect(bucket).to have_received(:object).with('users/ABC123')
       end
 

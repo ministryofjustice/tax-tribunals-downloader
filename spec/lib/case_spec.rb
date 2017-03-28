@@ -10,6 +10,11 @@ RSpec.describe TaxTribunal::Case do
       expect(subject).to receive(:objects).with(prefix: '12345').and_return([file, directory])
     end
 
+    it 'returns an array of File objects' do
+      expect(subject.files).to be_an_instance_of(Array)
+      expect(subject.files.first).to be_an_instance_of(TaxTribunal::File)
+    end
+
     it 'instantiates a new file object for each non-directory listing from #objects' do
       expect(TaxTribunal::File).to receive(:new).with('value')
       subject.files
