@@ -1,225 +1,235 @@
 require 'spec_helper'
 
 RSpec.describe TaxTribunal::Login do
-  let(:parsed_oauth_data) {
-    {
-      id: 1,
-      email: "superadmin@example.com",
-      first_name: "John",
-      last_name: "Bloggs",
-      permissions: [
-        {
-          organisation: "hmcts.moj",
-          roles: ["viewer"]
-        }
-      ],
-      links: {
-        profile: "http://localhost:5000/profile",
-        logout: "http://localhost:5000/users/sign_out"
-      }
-    }
-  }
+  let(:logger) { double.as_null_object }
+  let(:user) { double.as_null_object }
+  let(:session) { double.as_null_object }
 
-  # This ensures the record exists on the S3 test bucket if you need to re-record the cassette.
   before do
-    TaxTribunal::User.create('56789', email: 'bob@example.com', profile: 'http://sso-profile-link', logout: 'http://sso-logout-link')
-
-    # No need to hit S3 for this now.  These are overriden in individual specs as needed.
-    allow(TaxTribunal::User).to receive(:find)
-    allow(TaxTribunal::User).to receive(:create)
+    allow_any_instance_of(described_class).to receive(:logger).and_return(logger)
   end
 
-  describe '/login' do
-    context 'the user is already logged in' do
-      before do
-        allow(TaxTribunal::User).to receive(:find).and_return(OpenStruct.new(email: 'bob@example.com'))
-      end
-
-      it 'shows the user that they are logged in' do
-        get '/login', {}, 'rack.session' => { auth_key: '56789' }
-        expect(last_response.body).to include('log in from the specific case page')
-      end
-
-      context 'logging' do
-        let(:logger) { double(:logger) }
-
-        it 'logs the request' do
-          expect(logger).to receive(:info).with({ action: 'login', state: 'existing', message: 'bob@example.com' })
-          expect_any_instance_of(Sinatra::Helpers).to receive(:logger).and_return(logger)
-          get '/login', {}, 'rack.session' => { auth_key: '56789' }
-        end
-      end
+  describe 'get /login' do
+    before do
+      allow_any_instance_of(described_class).to receive(:current_user).and_return(user)
     end
 
-    context 'the user is not already logged in' do
+    context 'logged in' do
       before do
-        allow(SecureRandom).to receive(:uuid).and_return(12345)
+        allow_any_instance_of(described_class).to receive(:logged_in?).and_return(true)
       end
 
-      it 'redirects to the oauth server so they can log in' do
+      it 'renders the :root template' do
         get '/login'
-        follow_redirect!
-        expect(last_request.url).
-          to eq("http://localhost:5000/oauth/authorize?client_id=dummy+id&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Foauth%2Fcallback%3Fauth_key%3D12345%26return_to%3D&response_type=code")
+        expect(last_response.body).to include('<h2 class="heading-medium">Please log in from the specific case page.</h2>')
+      end
+
+      it 'logs the request' do
+        expect(logger).to receive(:info)
+        get '/login'
       end
     end
 
+    context 'not logged in' do
+      before do
+        allow_any_instance_of(described_class).to receive(:logged_in?).and_return(false)
+        allow(SecureRandom).to receive(:uuid).and_return(12345)
+        allow_any_instance_of(described_class).to receive(:session).and_return(session)
+      end
+
+      it 'logs the request' do
+        expect(logger).to receive(:info)
+        get '/login'
+      end
+
+      it 'stores an auth_key in the session to lookup on callback' do
+        allow_any_instance_of(described_class).to receive(:session).and_return(session)
+        expect(session).to receive(:'[]=').with(:auth_key, 12345).at_least(:once)
+        get '/login'
+      end
+
+      context 'builds and redirects to oauth authorized callback url' do
+        let(:auth_code) { double }
+        let(:auth_key) { 12345 }
+        let(:return_to) { 'http://this-host-callback-url' }
+        let(:authorized_callback_url) { 'http://oauth-service-authorized-url' }
+        let(:redirect_uri) { "#{described_class::CALLBACK_URI}?auth_key=#{auth_key}&return_to=#{return_to}" }
+
+        before do
+          allow_any_instance_of(described_class).to receive(:oauth_client).and_return(double(auth_code: auth_code))
+          allow(session).to receive(:'[]').with(:auth_key).and_return(auth_key)
+          allow(session).to receive(:'[]').with(:return_to).and_return(return_to)
+        end
+
+        it 'builds the authorized callback url' do
+          expect(auth_code).to receive(:authorize_url).with(redirect_uri: redirect_uri)
+          get '/login'
+        end
+
+        it 'redirects to the authorized callback url' do
+          allow(auth_code).to receive(:authorize_url).and_return(authorized_callback_url)
+          expect_any_instance_of(described_class).to receive(:redirect).with(authorized_callback_url)
+          get '/login'
+        end
+      end
+    end
   end
 
-  describe '/logout' do
-    before do
-      get '/logout', {}, 'rack.session' => { auth_key: '56789' }
+  describe 'get /logout' do
+    context 'logged in' do
+      before do
+        allow_any_instance_of(described_class).to receive(:current_user).and_return(user)
+        allow_any_instance_of(described_class).to receive(:logged_in?).and_return(true)
+      end
+
+      it 'logs the request' do
+        expect(logger).to receive(:info)
+        get '/logout'
+      end
     end
 
-    it 'shows the user a new login link' do
-      expect(last_response.body).
-        to include('Please log in from the specific case page.')
+    it 'destroies the session' do
+      allow_any_instance_of(described_class).to receive(:session).and_return(session)
+      expect(session).to receive(:destroy)
+      get '/logout'
     end
 
-    it 'clears the user session' do
-      # Have to convert it to a vanilla hash because it is a
-      # Rack::Session::Abstract::SessionHash and it != {}.
-      expect(last_request.env['rack.session'].to_h).to eq({})
+    it 'renders the :root template' do
+      get '/logout'
+      expect(last_response.body).to include('<h2 class="heading-medium">Please log in from the specific case page.</h2>')
     end
   end
 
-  describe '/oauth/callback' do
+  describe 'get /oauth/callback' do
+    subject { get '/oauth/callback', params }
+    let(:auth_key) { 67890 }
+    let(:params) { { code: 12345, auth_key: auth_key, return_to: 'some-url' } }
+    let(:get_token) { double(:get_token).as_null_object }
+    let(:auth_code) { double(:auth_code, get_token: get_token) }
+    let(:oauth_client) { double(:oauth_client, auth_code: auth_code) }
+    let(:json_response) { double(:json_response).as_null_object }
+
     before do
-      allow_any_instance_of(TaxTribunal::Login).to receive(:oauth_response).and_return(parsed_oauth_data)
+      allow_any_instance_of(described_class).to receive(:oauth_client).and_return(oauth_client)
+      allow(JSON).to receive(:parse).and_return(json_response)
     end
 
-    context 'authorised user' do
-      it 'persists the auth token and email to an s3 bucket to indicate a login' do
-        expect(TaxTribunal::User).
-          to receive(:create).
-          with('45678',
-               { email: 'superadmin@example.com',
-                 logout: 'http://localhost:5000/users/sign_out',
-                 profile: 'http://localhost:5000/profile' })
-          get 'oauth/callback?code=deadbeef&auth_key=45678&return_to=/12345'
-      end
-
-      it 'redirects to the requested page' do
-        get 'oauth/callback?code=deadbeef&auth_key=45678&return_to=/12345'
-        expect(last_response.status).to eq(302)
-        expect(last_request.url).to eq("http://example.org/oauth/callback?code=deadbeef&auth_key=45678&return_to=%2F12345")
-      end
-
+    it 'returns 422 without the code parameter' do
+      params.delete(:code)
+      subject
+      expect(last_response.status).to be(422)
     end
 
-    context 'email missing' do
+    it 'returns 422 without the auth_key parameter' do
+      params.delete(:auth_key)
+      subject
+      expect(last_response.status).to be(422)
+    end
+
+    it 'returns 422 without the return_to parameter' do
+      params.delete(:return_to)
+      subject
+      expect(last_response.status).to be(422)
+    end
+
+
+    # The oauth client has a convoluted call chain that does not lend
+    # itself well to mocking/stubbing.  The complexity of this spec is an
+    # unfortunate reflection of this.
+    describe '.authorize!' do
+      let(:permissions) { double(:permission).as_null_object }
+      let(:organisation) { double(:organisation).as_null_object }
+      let(:role) { double(:role).as_null_object }
+
       before do
-        allow_any_instance_of(TaxTribunal::Login).to receive(:oauth_response).and_return(
-          parsed_oauth_data.merge(email: nil)
-        )
+        # Fall through so we hit `.authorize!`, which is a private method.
+        allow(TaxTribunal::User).to receive(:find).and_return(nil)
+        allow(json_response).to receive(:fetch).and_return(permissions)
+        allow(permissions).to receive(:fetch).with(:organisation).and_return(organisation)
+        allow(permissions).to receive(:fetch).with(:roles).and_return(role)
+        # Default for the spec is to authorise the user.  This is explicity
+        # tested in the `.authorised?` context, below.
+        allow(organisation).to receive(:eql?).and_return(true)
+        allow(role).to receive(:include?).and_return(true)
       end
 
-      it 'does not persist the auth token' do
-        expect(TaxTribunal::User).not_to receive(:create)
-        get 'oauth/callback?code=deadbeef&auth_key=45678&return_to=/12345'
+      describe '.log_result' do
+        it 'sets error level if the params contain an :error key' do
+          allow(json_response).to receive(:key?).and_return(false)
+          expect(json_response).to receive(:fetch).with(:error, nil).and_return(json_response)
+          expect(logger).to receive(:error).with(json_response)
+          subject
+        end
+
+        it 'sets level if the params do not contain an :error key' do
+          allow(json_response).to receive(:key?).and_return(false)
+          expect(json_response).to receive(:fetch).with(:error, nil).and_return(nil)
+          expect(logger).to receive(:info).with(json_response)
+          subject
+        end
+      end
+
+      context 'missing email or link keys' do
+        specify ':email key is missing from the request parameters' do
+          expect(json_response).to receive(:key?).with(:email).and_return(false)
+          expect(logger).to receive(:error)
+          subject
+        end
+
+        specify ':links key is missing from the requiest parameters' do
+          expect(json_response).to receive(:key?).with(:links).and_return(false)
+          expect(logger).to receive(:error)
+          subject
+        end
+      end
+
+      it 'fetches pemissions from the response body' do
+        expect(json_response).to receive(:fetch).with(:permissions, {})
+        # Keep it from fallling through to User.create
+        allow(json_response).to receive(:key?).and_return(false)
+        subject
+      end
+
+      describe '.authorised?' do
+        before do
+          # Without this, permissions bypasses the #any? block check.
+          expect(permissions).to receive(:any?).and_yield(permissions)
+          # Prevent it from falling through the the Aws::S3 client.
+          allow(json_response).to receive(:key?).and_return(false)
+        end
+
+        it 'checks the organisation received from moj-sso' do
+          expect(organisation).to receive(:eql?).with(described_class::ORG)
+          subject
+        end
+
+        it 'checks the role received from moj-sso' do
+          expect(role).to receive(:include?).with(described_class::ROLE)
+          subject
+        end
       end
     end
 
-    context 'incorrect organisation' do
+    context 'user info is persisted already' do
+      let(:user) { double(email: 'test@test.com') }
+
       before do
-        allow_any_instance_of(TaxTribunal::Login).to receive(:oauth_response).and_return(
-          parsed_oauth_data.merge(permissions: [{ organisation: 'noms', roles: ['viewer'] }])
-        )
+        allow(TaxTribunal::User).to receive(:find).with(auth_key.to_s).and_return(user)
       end
 
-      it 'does not persist the auth token' do
-        expect(TaxTribunal::User).not_to receive(:create)
-        get 'oauth/callback?code=deadbeef&auth_key=45678&return_to=/12345'
-      end
-    end
-
-    context 'incorrect role' do
-      before do
-        allow_any_instance_of(TaxTribunal::Login).to receive(:oauth_response).and_return(
-          parsed_oauth_data.merge(
-            permissions: [
-              { organisation: 'hmcts.moj', roles: ['nobody'] }
-            ]
-          )
-        )
+      it 'gets the user info using User#find' do
+        expect(TaxTribunal::User).to receive(:find).with(auth_key.to_s).and_return(user)
+        subject
       end
 
-      it 'does not persist the auth token' do
-        expect(TaxTribunal::User).not_to receive(:create)
-        get 'oauth/callback?code=deadbeef&auth_key=45678&return_to=/12345'
-      end
-    end
-
-    context 'code not received' do
-      it 'repsonds with a 422' do
-        get 'oauth/callback?auth_key=45678&return_to=/12345'
-        expect(last_response.status).to eq(422)
-      end
-    end
-
-    describe 'logging' do
-      let(:logger) { double(:logger) }
-
-      context 'authenticated user' do
-        before do
-          allow(TaxTribunal::User).to receive(:find).and_return(OpenStruct.new(email: 'superadmin@example.com'))
-        end
-
-        it 'logs the request' do
-          expect(logger).to receive(:info).with(
-            {
-              action: '/oauth/callback',
-              message: 'already persisted superadmin@example.com to 45678',
-              requested: '/12345'
-            }.to_json
-          )
-          expect_any_instance_of(Sinatra::Helpers).to receive(:logger).and_return(logger)
-          get 'oauth/callback?code=deadbeef&auth_key=45678&return_to=/12345'
-        end
+      it 'logs the request' do
+        expect(logger).to receive(:info)
+        subject
       end
 
-      context 'new log in' do
-        before do
-          allow(TaxTribunal::User).to receive(:find).and_return(nil)
-          allow_any_instance_of(TaxTribunal::Login).to receive(:oauth_response).and_return(parsed_oauth_data)
-        end
-
-        it 'logs the request' do
-          expect(logger).to receive(:info).with(
-            {
-              action: '/oauth/callback',
-              message: 'persisted superadmin@example.com to 45678',
-              requested: '/12345'
-            }.to_json
-          )
-          expect_any_instance_of(Sinatra::Helpers).to receive(:logger).and_return(logger)
-          get 'oauth/callback?code=deadbeef&auth_key=45678&return_to=/12345'
-        end
-      end
-
-      context 'incorrect role' do
-        before do
-          allow_any_instance_of(TaxTribunal::Login).to receive(:oauth_response).and_return(
-            parsed_oauth_data.merge(
-              permissions: [
-                { organisation: 'hmcts.moj', roles: ['nobody'] }
-              ]
-            )
-          )
-        end
-
-        it 'logs the request' do
-          expect(logger).to receive(:info).with(
-            {
-              action: '/oauth/callback',
-              method: 'persist_user!',
-              status: 'failed',
-              message: {}
-            }.to_json
-          )
-          expect_any_instance_of(Sinatra::Helpers).to receive(:logger).and_return(logger)
-          get 'oauth/callback?code=deadbeef&auth_key=45678&return_to=/12345'
-        end
+      it 'redirects to the return_to param' do
+        expect_any_instance_of(described_class).to receive(:redirect).with(/#{params[:return_to]}/)
+        subject
       end
     end
   end

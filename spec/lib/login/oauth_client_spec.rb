@@ -20,10 +20,7 @@ RSpec.describe TaxTribunal::Login do
     }
   }
 
-  # This ensures the record exists on the S3 test bucket if you need to re-record the cassette.
   before do
-    TaxTribunal::User.create('56789', email: 'bob@example.com', profile: 'http://sso-profile-link', logout: 'http://sso-logout-link')
-
     # No need to hit S3 for this now.
     allow(TaxTribunal::User).to receive(:find)
     allow(TaxTribunal::User).to receive(:create)
