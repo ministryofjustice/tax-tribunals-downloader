@@ -29,8 +29,13 @@ RSpec.describe TaxTribunal::Status do
   let(:first_key) { double(:first_key) }
 
   context 'everything is operating normally' do
+    let(:authorize_url) { double(:authorize_url) }
+
     before do
       bucket_status_good
+      allow(SecureRandom).to receive(:uuid).and_return('ABC123')
+      allow(authorize_url).to receive(:authorize_url).and_return('https://some-url')
+      allow(TaxTribunal::SsoClient).to receive(:new).and_return(authorize_url)
       get '/status'
     end
 
@@ -43,6 +48,17 @@ RSpec.describe TaxTribunal::Status do
     describe 'read_test' do
       specify do
         expect(response[:dependencies][:s3][:read_test]).to eq('ok')
+      end
+    end
+
+    describe 'sso_test' do
+      specify do
+        expect(response[:dependencies][:sso_test]).to eq('ok')
+      end
+
+      # Mutant kill
+      specify 'ensure the test makes realistic authorize_url call' do
+        expect(authorize_url).to have_received(:authorize_url).with(auth_key: 'ABC123', return_to: '/')
       end
     end
   end
@@ -62,6 +78,46 @@ RSpec.describe TaxTribunal::Status do
     describe 'read_test' do
       specify do
         expect(response[:dependencies][:s3][:read_test]).to eq('failed')
+      end
+    end
+  end
+
+  context 'the SSO test fails, returning blank' do
+    before do
+      bucket_status_good
+      allow(TaxTribunal::SsoClient).to receive(:new).and_return(double(authorize_url: ''))
+      get '/status'
+    end
+
+    describe 'service_status' do
+      specify do
+        expect(response[:service_status]).to eq('failed')
+      end
+    end
+
+    describe 'sso_test' do
+      specify do
+        expect(response[:dependencies][:sso_test]).to eq('failed')
+      end
+    end
+  end
+
+  context 'the SSO test fails, raising an exception' do
+    before do
+      bucket_status_good
+      allow(TaxTribunal::SsoClient).to receive(:new).and_raise(RuntimeError)
+      get '/status'
+    end
+
+    describe 'service_status' do
+      specify do
+        expect(response[:service_status]).to eq('failed')
+      end
+    end
+
+    describe 'sso_test' do
+      specify do
+        expect(response[:dependencies][:sso_test]).to eq('failed')
       end
     end
   end
