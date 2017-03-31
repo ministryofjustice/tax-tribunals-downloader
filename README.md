@@ -43,6 +43,11 @@ Downloader app (the path should normally be `/oauth/callback`).
 A callback parameter required by the OAuth2 `get_token` method.  It does
 not have any application here, but is otherwise required.
 
+### SENTRY_DSN
+
+Only needed in production environments to report unhandled exceptions to Sentry. 
+If variable is not set, Sentry reporting will be disabled.
+
 ### NOTE REGARDING AWS CREDENTIALS
 
 Credentials are not required if the downloader is run within AWS.

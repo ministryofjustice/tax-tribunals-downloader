@@ -13,8 +13,6 @@ module TaxTribunal
 
     configure do
       enable :sessions
-      set :raise_errors, true
-      set :show_exceptions, false
       set :views, "#{settings.root}/../../views"
       set :public_folder, "#{settings.root}/../../public"
     end
