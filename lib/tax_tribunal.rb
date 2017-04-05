@@ -10,10 +10,12 @@ require_relative 'tax_tribunal/file'
 require_relative 'tax_tribunal/login'
 require_relative 'tax_tribunal/root'
 require_relative 'tax_tribunal/user'
+require_relative 'tax_tribunal/status'
 
 module TaxTribunal
   class App < Sinatra::Base
     # Use caution when changing the ordering.
+    use Status
     use Login
     use Root
     use Download

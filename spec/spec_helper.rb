@@ -11,6 +11,8 @@ require_relative '../lib/tax_tribunal'
 require 'rspec'
 require 'rack/test'
 require 'pry'
+# This is here to ensure that we do not accidentally make external calls.
+require 'webmock/rspec'
 
 ENV['RACK_ENV'] = 'test'
 
