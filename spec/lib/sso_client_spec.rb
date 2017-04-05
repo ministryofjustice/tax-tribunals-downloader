@@ -125,11 +125,11 @@ RSpec.describe TaxTribunal::SsoClient do
       end
 
       it 'checks that organization in the response is correct' do
-        expect(organisation).to have_received(:eql?).with('hmcts.moj')
+        expect(organisation).to have_received(:eql?).with(instance_of(String))
       end
 
       it 'checks that roles in the response are correct' do
-        expect(roles).to have_received(:include?).with('viewer')
+        expect(roles).to have_received(:include?).with(instance_of(String))
       end
     end
   end

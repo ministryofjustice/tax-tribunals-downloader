@@ -34,13 +34,13 @@ RSpec.describe TaxTribunal::Login do
 
     before do
       expect(OAuth2::Client).to receive(:new).with(
-        'dummy id',
-        'dummy secret',
-        site: 'http://localhost:5000'
+        instance_of(String),
+        instance_of(String),
+        site: instance_of(String)
       ).and_return(client)
       expect(client).to receive(:auth_code).and_return(auth_code)
       expect(auth_code).to receive(:get_token).with(
-        'deadbeef',
+        instance_of(String),
         redirect_uri: 'http://localhost:3000/oauth/callback?auth_key=45678&return_to=/12345'
       ).and_return(token)
       expect(token).to receive(:get).with('/api/user_details').and_return(resp)
