@@ -1,5 +1,8 @@
 # Tax Tribunals Downloader
 
+[![Build
+Status](https://travis-ci.org/ministryofjustice/tax-tribunals-downloader.svg?branch=master)](https://travis-ci.org/ministryofjustice/tax-tribunals-downloader)
+
 ## ENV variables
 
 Tax Tribunal Downloader requires several environment variables to be set
@@ -45,7 +48,7 @@ not have any application here, but is otherwise required.
 
 ### SENTRY_DSN
 
-Only needed in production environments to report unhandled exceptions to Sentry. 
+Only needed in production environments to report unhandled exceptions to Sentry.
 If variable is not set, Sentry reporting will be disabled.
 
 ### NOTE REGARDING AWS CREDENTIALS
