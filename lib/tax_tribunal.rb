@@ -1,8 +1,10 @@
 require 'sinatra'
 require 'securerandom'
 
-require_relative 'tax_tribunal/case'
 # Load order is important, alphabetical otherwise
+require_relative 'tax_tribunal/s3'
+require_relative 'tax_tribunal/bucket_status'
+require_relative 'tax_tribunal/case'
 require_relative 'tax_tribunal/downloader'
 require_relative 'tax_tribunal/download'
 

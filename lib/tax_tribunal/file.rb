@@ -1,5 +1,3 @@
-require_relative 's3'
-
 module TaxTribunal
   class File
     EXPIRES_IN = 3600 # seconds
