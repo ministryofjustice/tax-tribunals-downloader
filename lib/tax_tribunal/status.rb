@@ -1,18 +1,6 @@
 require_relative 'sso_client'
 require 'active_support/core_ext/object/blank'
 
-# :nocov:
-class BucketStatus
-  include TaxTribunal::S3
-  extend Forwardable
-  def_delegators :bucket, :objects
-
-  def readable?
-    new.objects.first.exists?
-  end
-end
-# :nocov:
-
 module TaxTribunal
   class Status < Downloader
 
@@ -20,6 +8,7 @@ module TaxTribunal
       checks = service_status
       {
         service_status: checks[:service_status],
+        version: version,
         dependencies: {
           s3: {
             read_test: checks[:read_test],
@@ -30,6 +19,15 @@ module TaxTribunal
     end
 
     private
+
+    def version
+      # This has been manually checked in a demo app in a docker container running
+      # ruby:latest with Docker 1.12. Ymmv, however; in particular it may not
+      # work on alpine-based containers. It is mocked at the method level in the
+      # specs, so it is possible to simply comment the call out if there are
+      # issues with it.
+      `git rev-parse HEAD`.chomp
+    end
 
     def service_status
       service_status = if read_test && sso_test
@@ -45,7 +43,7 @@ module TaxTribunal
     end
 
     def read_test
-      @read_test ||= BucketStatus.readable?
+      @read_test ||= settings.bucket_status.readable?
     end
 
     def sso_test
