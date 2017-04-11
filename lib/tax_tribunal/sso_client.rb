@@ -8,7 +8,8 @@ module TaxTribunal
     TOKEN_REDIRECT_URI = ENV.fetch('MOJSSO_TOKEN_REDIRECT_URI')
 
     def authorize_url(session)
-      auth_key, return_to = session.values_at(:auth_key, :return_to)
+      auth_key = session[:auth_key]
+      return_to = session[:return_to]
       oauth_client.auth_code.authorize_url(
         redirect_uri: "#{CALLBACK_URI}?auth_key=#{auth_key}&return_to=#{return_to}"
       )
