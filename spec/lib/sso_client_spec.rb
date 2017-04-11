@@ -50,7 +50,8 @@ RSpec.describe TaxTribunal::SsoClient do
 
     describe '#authorize_url' do
       before do
-        allow(session).to receive(:values_at).with(:auth_key, :return_to).and_return([1234, 'http://test.com'])
+        allow(session).to receive(:[]).with(:auth_key).and_return(1234)
+        allow(session).to receive(:[]).with(:return_to).and_return('http://test.com')
         subject.authorize_url(session)
       end
 
