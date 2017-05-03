@@ -23,7 +23,16 @@ GEM
     aws-sdk-resources (2.6.6)
       aws-sdk-core (= 2.6.6)
     brakeman (3.4.0)
+    builder (3.2.3)
     byebug (9.0.6)
+    capybara (2.13.0)
+      addressable
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      xpath (~> 2.0)
+    cliver (0.3.2)
     coderay (1.1.1)
     concord (0.1.5)
       adamantium (~> 0.2.0)
@@ -31,6 +40,17 @@ GEM
     concurrent-ruby (1.0.2)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
+    cucumber (2.4.0)
+      builder (>= 2.1.2)
+      cucumber-core (~> 1.5.0)
+      cucumber-wire (~> 0.0.1)
+      diff-lcs (>= 1.1.3)
+      gherkin (~> 4.0)
+      multi_json (>= 1.7.5, < 2.0)
+      multi_test (>= 0.1.2)
+    cucumber-core (1.5.0)
+      gherkin (~> 4.0)
+    cucumber-wire (0.0.1)
     diff-lcs (1.2.5)
     docile (1.1.5)
     dotenv (2.1.1)
@@ -41,6 +61,7 @@ GEM
     fuubar (2.2.0)
       rspec-core (~> 3.0)
       ruby-progressbar (~> 1.4)
+    gherkin (4.0.0)
     hashdiff (0.3.0)
     i18n (0.7.0)
     ice_nine (0.11.2)
@@ -53,6 +74,10 @@ GEM
     memoizable (0.4.2)
       thread_safe (~> 0.3, >= 0.3.1)
     method_source (0.8.2)
+    mime-types (3.1)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2016.0521)
+    mini_portile2 (2.1.0)
     minitest (5.9.1)
     morpher (0.2.6)
       abstract_type (~> 0.0.7)
@@ -64,6 +89,7 @@ GEM
       ice_nine (~> 0.11.0)
       procto (~> 0.0.2)
     multi_json (1.12.1)
+    multi_test (0.1.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     mutant (0.8.11)
@@ -85,6 +111,8 @@ GEM
     mutant-rspec (0.8.11)
       mutant (~> 0.8.11)
       rspec-core (>= 3.4.0, < 3.6.0)
+    nokogiri (1.7.1)
+      mini_portile2 (~> 2.1.0)
     oauth2 (1.2.0)
       faraday (>= 0.8, < 0.10)
       jwt (~> 1.0)
@@ -94,6 +122,11 @@ GEM
     parallel (1.9.0)
     parser (2.3.1.4)
       ast (~> 2.2)
+    phantomjs (2.1.1.0)
+    poltergeist (1.13.0)
+      capybara (~> 2.1)
+      cliver (~> 0.3.1)
+      websocket-driver (>= 0.2.0)
     powerpack (0.1.1)
     procto (0.0.3)
     pry (0.10.4)
@@ -167,6 +200,11 @@ GEM
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
+    websocket-driver (0.6.5)
+      websocket-extensions (>= 0.1.0)
+    websocket-extensions (0.1.2)
+    xpath (2.0.0)
+      nokogiri (~> 1.3)
 
 PLATFORMS
   ruby
@@ -175,12 +213,15 @@ DEPENDENCIES
   activesupport
   aws-sdk
   brakeman
+  cucumber
   dotenv
   erubis
   fuubar
   logstash-logger
   mutant-rspec
   oauth2
+  phantomjs
+  poltergeist
   pry
   pry-byebug
   puma
