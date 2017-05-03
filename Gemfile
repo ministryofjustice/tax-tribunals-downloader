@@ -21,7 +21,10 @@ end
 
 group :test do
   gem 'brakeman'
+  gem 'cucumber'
   gem 'fuubar'
+  gem 'poltergeist'
+  gem 'phantomjs'
   gem 'rack-test'
   gem 'rubocop', require: false
   gem 'rubocop-rspec', require: false
