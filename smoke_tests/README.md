@@ -23,5 +23,9 @@ The script for running the Docker container on MoJ's CI is as follows:
 
 set -euo pipefail
 
-docker-compose -f docker-compose-smoketests.yml up
+docker build -f Dockerfile.smoketests -t smoketests .
+
+docker run -e "DOWNLOADER_URI=${DOWNLOADER_URI}" |
+-e "SMOKETEST_USER=${SMOKETEST_USER}" |
+-e "SMOKETEST_PASSWORD=${SMOKETEST_PASSWORD}" smoketests
 ```
