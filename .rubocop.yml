@@ -19,7 +19,7 @@
     StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#safe-assignment-in-condition'
     Enabled: true
 
-  Lint/BlockAlignment:
+  Layout/BlockAlignment:
     Description: 'Align block ends correctly.'
     Enabled: true
 
@@ -27,7 +27,7 @@
     Description: "Don't refer to the keyword argument in the default value."
     Enabled: true
 
-  Lint/ConditionPosition:
+  Layout/ConditionPosition:
     Description: >-
                    Checks for condition placed in a confusing position relative to
                    the keyword.
@@ -38,7 +38,7 @@
     Description: 'Check for debugger calls.'
     Enabled: true
 
-  Lint/DefEndAlignment:
+  Layout/DefEndAlignment:
     Description: 'Align ends corresponding to defs correctly.'
     Enabled: true
 
@@ -66,7 +66,7 @@
     Description: 'Checks for empty string interpolation.'
     Enabled: true
 
-  Lint/EndAlignment:
+  Layout/EndAlignment:
     Description: 'Align ends correctly.'
     Enabled: true
 
@@ -92,13 +92,7 @@
     StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#dont-hide-exceptions'
     Enabled: true
 
-  Lint/InvalidCharacterLiteral:
-    Description: >-
-                   Checks for invalid character literals with a non-escaped
-                   whitespace character.
-    Enabled: true
-
-  Lint/LiteralInCondition:
+  Lint/LiteralAsCondition:
     Description: 'Checks of literals used in conditions.'
     Enabled: true
 
@@ -155,7 +149,7 @@
     Description: 'Do not use prefix `_` for a variable that is used.'
     Enabled: true
 
-  Lint/UnneededDisable:
+  Lint/UnneededCopDisableDirective:
     Description: >-
                    Checks for rubocop:disable comments that can be removed.
                    Note: this cop is not disabled when disabling all cops.
@@ -354,7 +348,7 @@
     StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#indent-public-private-protected'
     Enabled: false
 
-  Style/AccessorMethodName:
+  Naming/AccessorMethodName:
     Description: Check the naming of accessor methods for get_/set_.
     Enabled: false
 
@@ -398,7 +392,7 @@
     StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#english-comments'
     Enabled: false
 
-  Style/AsciiIdentifiers:
+  Naming/AsciiIdentifiers:
     Description: 'Use only ascii symbols in identifiers.'
     StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#english-identifiers'
     Enabled: false
@@ -454,7 +448,7 @@
     StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-character-literals'
     Enabled: false
 
-  Style/ClassAndModuleCamelCase:
+  Naming/ClassAndModuleCamelCase:
     Description: 'Use CamelCase for classes and modules.'
     StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#camelcase-classes'
     Enabled: false
@@ -500,7 +494,7 @@
     Description: 'Indentation of comments.'
     Enabled: false
 
-  Style/ConstantName:
+  Naming/ConstantName:
     Description: 'Constants should use SCREAMING_SNAKE_CASE.'
     StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#screaming-snake-case'
     Enabled: false
@@ -589,7 +583,7 @@
     Description: 'Do not use unnecessary spacing.'
     Enabled: false
 
-  Style/FileName:
+  Naming/FileName:
     Description: 'Use snake_case for source file names.'
     StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#snake-case-files'
     Enabled: false
@@ -603,7 +597,7 @@
     Description: 'Checks the indentation of the first parameter in a method call.'
     Enabled: false
 
-  Style/FlipFlop:
+  Lint/FlipFlop:
     Description: 'Checks for flip flops'
     StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-flip-flops'
     Enabled: false
@@ -705,7 +699,7 @@
     StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#method-parens'
     Enabled: false
 
-  Style/MethodName:
+  Naming/MethodName:
     Description: 'Use the configured style when naming methods.'
     StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#snake-case-symbols-methods-vars'
     Enabled: false
@@ -793,7 +787,7 @@
     StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#ternary-operator'
     Enabled: false
 
-  Style/OpMethod:
+  Naming/BinaryOperatorParameterName:
     Description: 'When defining binary operators, name the argument other.'
     StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#other-arg'
     Enabled: false
@@ -835,7 +829,7 @@
     StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-perl-regexp-last-matchers'
     Enabled: false
 
-  Style/PredicateName:
+  Naming/PredicateName:
     Description: 'Check the names of predicate methods.'
     StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#bool-methods-qmark'
     Enabled: false
