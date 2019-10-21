@@ -9,14 +9,14 @@ gem 'pry'
 gem 'puma'
 gem 'rake'
 gem 'sentry-raven'
-gem 'sinatra'
-gem 'sinatra-router'
+gem 'sinatra', '~> 1.4.8'
+gem 'sinatra-router', '~> 0.2.4'
 
 group :development, :test do
   gem 'dotenv'
   gem 'mutant-rspec'
   gem 'pry-byebug'
-  gem 'rspec'
+  gem 'rspec', '~> 3.9'
 end
 
 group :test do
