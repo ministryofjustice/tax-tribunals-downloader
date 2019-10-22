@@ -1,3 +1,7 @@
+# Azure Key Vault secrets to ENV variables
+require 'azure_env_secrets'
+::AzureEnvSecrets.load
+
 require 'raven'
 require_relative 'lib/tax_tribunal'
 
