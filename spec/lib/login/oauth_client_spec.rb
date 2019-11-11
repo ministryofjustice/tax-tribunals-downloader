@@ -21,7 +21,7 @@ RSpec.describe TaxTribunal::Login do
   }
 
   before do
-    # No need to hit S3 for this now.
+    # No need to hit Blob Storage for this now.
     allow(TaxTribunal::User).to receive(:find)
     allow(TaxTribunal::User).to receive(:create)
   end

@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 RSpec.describe TaxTribunal::Status do
-  let(:bucket_status) { class_double(TaxTribunal::BucketStatus) }
+  let(:container_status) { class_double(TaxTribunal::ContainerStatus) }
 
   before do
-    TaxTribunal::Downloader.set :bucket_status, bucket_status
-    allow(bucket_status).to receive(:readable?).and_return(true)
+    TaxTribunal::Downloader.set :container_status, container_status
+    allow(container_status).to receive(:readable?).and_return(true)
   end
 
   let(:response) { JSON.parse(last_response.body, symbolize_names: true) }
@@ -32,7 +32,7 @@ RSpec.describe TaxTribunal::Status do
 
     describe 'read_test' do
       specify do
-        expect(response[:dependencies][:s3][:read_test]).to eq('ok')
+        expect(response[:dependencies][:blob_storage][:read_test]).to eq('ok')
       end
     end
 
@@ -59,9 +59,9 @@ RSpec.describe TaxTribunal::Status do
     end
   end
 
-  context 'the S3 read test failed' do
+  context 'the blob storage read test failed' do
     before do
-      allow(bucket_status).to receive(:readable?).and_return(false)
+      allow(container_status).to receive(:readable?).and_return(false)
       get '/status'
     end
 
@@ -73,7 +73,7 @@ RSpec.describe TaxTribunal::Status do
 
     describe 'read_test' do
       specify do
-        expect(response[:dependencies][:s3][:read_test]).to eq('failed')
+        expect(response[:dependencies][:blob_storage][:read_test]).to eq('failed')
       end
     end
   end

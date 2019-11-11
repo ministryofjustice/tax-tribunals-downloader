@@ -3,7 +3,7 @@ FROM ministryofjustice/ruby:2.5.3-webapp-onbuild
 ENV PUMA_PORT 9292
 ENV RACK_ENV production
 
-ENV BUCKET_NAME               replace_this_at_build_time
+ENV FILES_CONTAINER_NAME      replace_this_at_build_time
 ENV MOJSSO_CALLBACK_URI       replace_this_at_build_time
 ENV MOJSSO_ID                 replace_this_at_build_time
 ENV MOJSSO_ORG                replace_this_at_build_time
@@ -12,7 +12,7 @@ ENV MOJSSO_SECRET             replace_this_at_build_time
 ENV MOJSSO_TOKEN_REDIRECT_URI replace_this_at_build_time
 ENV MOJSSO_URL                replace_this_at_build_time
 ENV SENTRY_DSN                replace_this_at_build_time
-ENV USER_BUCKET_NAME          replace_this_at_build_time
+ENV USER_CONTAINER_NAME       replace_this_at_build_time
 
 RUN touch /etc/inittab
 

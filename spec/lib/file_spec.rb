@@ -2,8 +2,7 @@ require 'spec_helper'
 
 RSpec.describe TaxTribunal::File do
   let(:key) { '9473fc9c-4635-4030-96ac-1618ac9c1aaa/test_file_name.txt' }
-  let(:bucket) { double('bucket')}
-  let(:s3object) { double('s3object') }
+  let(:signer) { double('signer') }
 
   subject { described_class.new(key) }
 
@@ -13,15 +12,11 @@ RSpec.describe TaxTribunal::File do
     end
   end
 
-  describe '#s3_url' do
-    before do
-      allow(subject).to receive(:bucket).and_return(bucket)
-      expect(bucket).to receive(:object).with(key).and_return(s3object)
-    end
-
+  describe '#url' do
     it 'returns a pre-signed url' do
-      expect(s3object).to receive(:presigned_url).with(:get, expires_in: 3600)
-      subject.s3_url
+      expect(subject).to receive(:signer).and_return(signer)
+      expect(signer).to receive(:signed_uri)
+      subject.url
     end
   end
 end
