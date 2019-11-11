@@ -32,4 +32,9 @@ RSpec.configure do |config|
   end
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
+
+  ENV['AZURE_STORAGE_ACCOUNT'] = 'dummy-account'
+  ENV['AZURE_STORAGE_ACCESS_KEY'] = 'ZHVtbXktYWNjZXNzLWtleSBrZXk='
+  ENV['USER_CONTAINER_NAME'] = 'dummy-user-container'
+  ENV['FILES_CONTAINER_NAME'] = 'dummy-files-container'
 end

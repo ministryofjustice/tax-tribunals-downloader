@@ -2,7 +2,7 @@ module TaxTribunal
   class File
     EXPIRES_IN = 3600 # seconds
 
-    include TaxTribunal::S3
+    include TaxTribunal::AzureBlobStorage
 
     attr_reader :key
 
@@ -10,8 +10,17 @@ module TaxTribunal
       @key = key
     end
 
-    def s3_url
-      obj.presigned_url(:get, expires_in: EXPIRES_IN)
+    def url
+      file_uri = storage.generate_uri("#{files_container_name}/#{key}")
+
+      signer.signed_uri(
+        file_uri,
+        false,
+        service: 'b',
+        permissions: 'r',
+        content_disposition: :attachment,
+        expiry: expires_at
+      ).to_s
     end
 
     def name
@@ -20,8 +29,8 @@ module TaxTribunal
 
     private
 
-    def obj
-      bucket.object(key)
+    def expires_at
+      EXPIRES_IN ? (Time.now + EXPIRES_IN).utc.iso8601 : nil
     end
   end
 end

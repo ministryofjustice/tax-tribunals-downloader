@@ -8,13 +8,13 @@ Status](https://travis-ci.org/ministryofjustice/tax-tribunals-downloader.svg?bra
 Tax Tribunal Downloader requires several environment variables to be set
 in order to run:
 
-### BUCKET_NAME
+### FILES_CONTAINER_NAME
 
-The S3 bucket where the uploads will be stored.
+The Blob Storage container where the uploads will be stored.
 
-### USER_BUCKET_NAME
+### USER_CONTAINER_NAME
 
-The S3 bucket where user sessions are persisted.
+The Blob Storage container where user sessions are persisted.
 
 ### MOJSSO_ID
 
@@ -51,20 +51,16 @@ not have any application here, but is otherwise required.
 Only needed in production environments to report unhandled exceptions to Sentry.
 If variable is not set, Sentry reporting will be disabled.
 
-### NOTE REGARDING AWS CREDENTIALS
+### Note on Azure Storage Credentials
 
-Credentials are not required if the downloader is run within AWS.
-Permissions are handled by IAM roles.  If you need to test the app
-locally, it will automatically use `ENV['AWS_ACCESS_KEY_ID']` and
-`ENV['AWS_SECRET_ACCESS_KEY']` if they are set.  They **should not** be
-set in the production environment.
+They are picked up automatically by the `azure-storage-blob` gem if you use the environment
+variables set in `env.example`.
 
 ## Testing
 
 To set the required environment variables for testing, just copy
-`.env.example` to `.env` and run your tests.  It uses the `dotenv` gem,
-which is setup and scoped to `spec_helper.rb`, which keeps it from
-polluting the other environments.  See the note regarding AWS
+`.env.example` to `.env` and run your tests. It uses the `dotenv` gem,
+which is setup and scoped to `spec_helper.rb`.  See the note regarding Azure
 credentials, above, as well.
 
 ## Development

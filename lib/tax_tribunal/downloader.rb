@@ -15,7 +15,7 @@ module TaxTribunal
       enable :sessions
       set :views, "#{settings.root}/../../views"
       set :public_folder, "#{settings.root}/../../public"
-      set :bucket_status, BucketStatus
+      set :container_status, ContainerStatus
     end
     # :nocov:
 
