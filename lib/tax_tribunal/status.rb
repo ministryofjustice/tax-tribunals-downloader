@@ -10,7 +10,7 @@ module TaxTribunal
         service_status: checks[:service_status],
         version: version,
         dependencies: {
-          s3: {
+          blob_storage: {
             read_test: checks[:read_test],
           },
           sso_test: checks[:sso_test]
@@ -43,7 +43,7 @@ module TaxTribunal
     end
 
     def read_test
-      @read_test ||= settings.bucket_status.readable?
+      @read_test ||= settings.container_status.readable?
     end
 
     def sso_test

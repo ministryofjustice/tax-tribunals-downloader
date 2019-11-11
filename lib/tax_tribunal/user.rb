@@ -1,17 +1,13 @@
-require_relative 's3'
-
 module TaxTribunal
   class User
-    extend TaxTribunal::S3
+    extend TaxTribunal::AzureBlobStorage
     USERS_DIR = 'users'
 
     def self.find(uuid)
       return nil if uuid.nil? || uuid.empty?
-      # This is the Aws::S3::Object#exists? method, not the
-      # ActiveRecord/ActiveResource method. It tests that object exsits in the
-      # s3 bucket, not that object exists locally.
-      if (user = user_obj(uuid)).exists?
-        data = JSON.parse(user.get.body.read, symbolize_names: true)
+
+      unless (user = get_user(uuid)).nil?
+        data = JSON.parse(user, symbolize_names: true)
         OpenStruct.new(
           id: uuid,
           email: data.fetch(:email),
@@ -21,9 +17,17 @@ module TaxTribunal
       end
     end
 
+    def self.get_user(uuid)
+      storage.get_blob(user_container_name, user_id(uuid)).last
+    rescue
+      nil
+    end
+
     def self.create(uuid, opts)
-      user_obj(uuid).put(
-        body: {
+      storage.create_block_blob(
+        user_container_name,
+        user_id(uuid),
+        {
           email: opts.fetch(:email),
           profile: opts.fetch(:profile),
           logout: opts.fetch(:logout)
@@ -31,12 +35,8 @@ module TaxTribunal
       )
     end
 
-    def self.user_obj(uuid)
-      bucket.object([USERS_DIR, uuid].join('/'))
-    end
-
-    def self.bucket_name
-      ENV.fetch('USER_BUCKET_NAME')
+    def self.user_id(uuid)
+      [USERS_DIR, uuid].join('/')
     end
   end
 end
