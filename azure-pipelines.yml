@@ -28,7 +28,7 @@ variables:
   manual.branch.prefix: 'master'
 
 resources:
-  containers:
+  # containers:
   # - container: my_container
   #   image: ubuntu:16.04
 
