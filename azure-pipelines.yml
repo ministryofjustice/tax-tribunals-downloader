@@ -27,7 +27,7 @@ variables:
   azure.subscription.endpoint: 'hmcts-pet'
   manual.branch.prefix: 'master'
 
-resources:
+# resources:
   # containers:
   # - container: my_container
   #   image: ubuntu:16.04
