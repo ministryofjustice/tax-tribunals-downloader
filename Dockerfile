@@ -12,20 +12,6 @@ ENV APP_BUILD_DATE ${APP_BUILD_DATE}
 ENV APP_GIT_COMMIT ${APP_GIT_COMMIT}
 ENV APP_BUILD_TAG ${APP_BUILD_TAG}
 
-# Application specific variables 
-
-ENV FILES_CONTAINER_NAME      replace_this_at_build_time
-ENV MOJSSO_CALLBACK_URI       replace_this_at_build_time
-ENV MOJSSO_ID                 replace_this_at_build_time
-ENV MOJSSO_ORG                replace_this_at_build_time
-ENV MOJSSO_ROLE               replace_this_at_build_time
-ENV MOJSSO_SECRET             replace_this_at_build_time
-ENV MOJSSO_TOKEN_REDIRECT_URI replace_this_at_build_time
-ENV MOJSSO_URL                replace_this_at_build_time
-ENV SENTRY_DSN                replace_this_at_build_time
-ENV USER_CONTAINER_NAME       replace_this_at_build_time
-
-
 # fix to address http://tzinfo.github.io/datasourcenotfound - PET ONLY
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update -q && \
