@@ -1,6 +1,6 @@
 module TaxTribunal
   class File
-    EXPIRES_IN = 3600 # seconds
+    EXPIRES_IN = 300 # seconds
 
     include TaxTribunal::AzureBlobStorage
 
