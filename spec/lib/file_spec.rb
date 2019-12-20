@@ -19,4 +19,14 @@ RSpec.describe TaxTribunal::File do
       subject.url
     end
   end
+
+  describe 'EXPIRES_IN constant' do
+    it 'should be defined' do
+      expect(described_class).to be_const_defined(:EXPIRES_IN)
+    end
+
+    it 'should be set to 300 seconds' do
+      expect(described_class::EXPIRES_IN).to be(300)
+    end
+  end
 end
