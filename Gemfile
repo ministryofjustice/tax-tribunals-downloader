@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'activesupport'
+gem 'application_insights', '~> 0.5.6'
 gem 'azure-storage-blob', '~> 1.1'
 gem 'azure-storage-common', '~> 1.1'
 gem 'azure_env_secrets', github: 'ministryofjustice/azure_env_secrets', tag: 'v0.1.3'
