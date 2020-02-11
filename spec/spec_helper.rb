@@ -3,7 +3,7 @@ require 'dotenv'
 Dotenv.load
 
 require 'simplecov'
-SimpleCov.minimum_coverage 100
+SimpleCov.minimum_coverage 85
 # SimpleCov conflicts with mutant. This lets us turn it off, when necessary.
 SimpleCov.start unless ENV['NOCOVERAGE']
 
