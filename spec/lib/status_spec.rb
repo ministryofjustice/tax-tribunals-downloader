@@ -20,7 +20,7 @@ RSpec.describe TaxTribunal::Status do
       allow(SecureRandom).to receive(:uuid).and_return('ABC123')
       allow(authorize_url).to receive(:authorize_url).and_return('https://some-url')
       allow(TaxTribunal::SsoClient).to receive(:new).and_return(authorize_url)
-      allow_any_instance_of(described_class).to receive(:`).with('git rev-parse HEAD').and_return('ABC123')
+      allow(ENV).to receive(:[]).with('APP_VERSION').and_return('c6f1b2a')
       get '/status'
     end
 
@@ -48,12 +48,8 @@ RSpec.describe TaxTribunal::Status do
     end
 
     describe 'version' do
-      # Necessary evil for coverage purposes.
-      it 'calls `git rev-parse HEAD`' do
-        version_string = double
-        # Mutant kill
-        expect(version_string).to receive(:chomp)
-        expect_any_instance_of(described_class).to receive(:`).with('git rev-parse HEAD').and_return(version_string)
+      it 'displays the APP_VERSION env var' do
+        expect(ENV).to receive(:[]).with('APP_VERSION').and_return('ABC123')
         get '/status'
       end
     end
