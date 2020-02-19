@@ -48,9 +48,11 @@ RSpec.describe TaxTribunal::Status do
     end
 
     describe 'version' do
+      let(:resp) { JSON.parse(last_response.body, symbolize_names: true) }
+
       it 'displays the APP_VERSION env var' do
-        expect(ENV).to receive(:[]).with('APP_VERSION').and_return('ABC123')
         get '/status'
+        expect(resp).to include(version: 'c6f1b2a')
       end
     end
   end
