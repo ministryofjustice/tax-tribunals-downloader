@@ -2,16 +2,11 @@ require 'spec_helper'
 
 RSpec.describe TaxTribunal::User do
   subject { described_class }
-  let(:bucket) { double(:bucket) }
+  let(:storage) { double(:storage) }
+  let(:container_name) { 'dummy-user-container' }
 
   before do
-    allow(described_class).to receive(:bucket).and_return(bucket)
-    allow(ENV).to receive(:fetch).at_least(:once)
-  end
-
-  it 'uses the USER_BUCKET ENV variable for persistence' do
-    subject.bucket_name
-    expect(ENV).to have_received(:fetch).with('USER_BUCKET_NAME')
+    allow(described_class).to receive(:storage).and_return(storage)
   end
 
   describe '.find' do
@@ -31,27 +26,15 @@ RSpec.describe TaxTribunal::User do
     end
 
     context 'user is persisted' do
-      let(:body) { double(:body, read: double(:read)) }
-      let(:get) { double(:s3_get, body: body) }
-      let(:object) { double(:object, get: get, exists?: true) }
+      let(:data) { { email: 'bob@test.com', profile: '<profile url>', logout: '<logout url>' }.to_json }
 
       before do
-        allow(bucket).to receive(:object).and_return(object)
+        expect(subject).to receive(:get_user).and_return(data)
         subject.find('ABC123')
       end
 
-      it 'checks to see if the user record is already persisted' do
-        # This is mocking the Aws::S3 method and is required.
-        expect(object).to have_received(:exists?)
-        expect(bucket).to have_received(:object).with('users/ABC123')
-      end
-
-      it 'calls .read on the body (required for s3)' do
-        expect(body).to have_received(:read)
-      end
-
       it 'symbolizes the JSON names (keys)' do
-        expect(JSON).to have_received(:parse).with(anything, symbolize_names: true)
+        expect(JSON).to have_received(:parse).with(data, symbolize_names: true)
       end
 
       it 'parses the persisted record' do
@@ -82,22 +65,24 @@ RSpec.describe TaxTribunal::User do
   end
 
   describe '.create' do
-    let(:object) { double.as_null_object }
-    let(:params) { { email: 'bob@test.com', profile: '<profile url>', logout: '<logout url>' } }
+    let(:storage) { double.as_null_object }
+    let(:data) { { email: 'bob@test.com', profile: '<profile url>', logout: '<logout url>' } }
+    let(:blob_name) { 'users/ABC123' }
 
     before do
-      allow(bucket).to receive(:object).and_return(object)
-      subject.create('ABC123', params)
-    end
-
-    it 'instantiates the new user object' do
-      # This may not work with mutation testing:
-      # https://relishapp.com/rspec/rspec-mocks/docs/basics/spies
-      expect(bucket).to have_received(:object).with('users/ABC123')
+      subject.create('ABC123', data)
     end
 
     it 'persists the user object' do
-      expect(object).to have_received(:put).with({ body: params.to_json })
+      expect(storage).to have_received(:create_block_blob).with(container_name, blob_name, data.to_json)
+    end
+  end
+
+  describe '.user_id' do
+    let(:user_id) { 'users/ABC123' }
+
+    it "adds the dir prefix 'users/' to the user id" do
+      expect(user_id).to eql('users/ABC123')
     end
   end
 end

@@ -2,12 +2,12 @@ require 'spec_helper'
 
 RSpec.describe TaxTribunal::Case do
   subject { described_class.new('12345') }
-  let(:file) { double(key: 'value', match: nil) }
-  let(:directory) { double(key: '/') }
+  let(:file) { double(name: 'value') }
+  let(:directory) { double(name: '/') }
 
   describe '#files' do
     before do
-      expect(subject).to receive(:objects).with(prefix: '12345').and_return([file, directory])
+      allow(subject).to receive_message_chain('storage.list_blobs').and_return([file, directory])
     end
 
     it 'returns an array of File objects' do
@@ -23,28 +23,6 @@ RSpec.describe TaxTribunal::Case do
     it 'does not instantiate file objects for keys with trailing slashes (directories)' do
       expect(TaxTribunal::File).not_to receive(:new).with('/')
       subject.files
-    end
-  end
-
-  describe '#exists?' do
-    context 'case has files' do
-      before do
-        expect(subject).to receive(:objects).with(prefix: '12345').and_return([file, directory])
-      end
-
-      specify do
-        expect(subject.exists?).to be(true)
-      end
-    end
-
-    context 'case does not have files' do
-      before do
-        expect(subject).to receive(:objects).with(prefix: '12345').and_return([])
-      end
-
-      specify do
-        expect(subject.exists?).to be(false)
-      end
     end
   end
 end

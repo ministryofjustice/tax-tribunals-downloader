@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 RSpec.describe TaxTribunal::Status do
-  let(:bucket_status) { class_double(TaxTribunal::BucketStatus) }
+  let(:container_status) { class_double(TaxTribunal::ContainerStatus) }
 
   before do
-    TaxTribunal::Downloader.set :bucket_status, bucket_status
-    allow(bucket_status).to receive(:readable?).and_return(true)
+    TaxTribunal::Downloader.set :container_status, container_status
+    allow(container_status).to receive(:readable?).and_return(true)
   end
 
   let(:response) { JSON.parse(last_response.body, symbolize_names: true) }
@@ -20,7 +20,7 @@ RSpec.describe TaxTribunal::Status do
       allow(SecureRandom).to receive(:uuid).and_return('ABC123')
       allow(authorize_url).to receive(:authorize_url).and_return('https://some-url')
       allow(TaxTribunal::SsoClient).to receive(:new).and_return(authorize_url)
-      allow_any_instance_of(described_class).to receive(:`).with('git rev-parse HEAD').and_return('ABC123')
+      allow(ENV).to receive(:[]).with('APP_VERSION').and_return('c6f1b2a')
       get '/status'
     end
 
@@ -32,7 +32,7 @@ RSpec.describe TaxTribunal::Status do
 
     describe 'read_test' do
       specify do
-        expect(response[:dependencies][:s3][:read_test]).to eq('ok')
+        expect(response[:dependencies][:blob_storage][:read_test]).to eq('ok')
       end
     end
 
@@ -48,20 +48,18 @@ RSpec.describe TaxTribunal::Status do
     end
 
     describe 'version' do
-      # Necessary evil for coverage purposes.
-      it 'calls `git rev-parse HEAD`' do
-        version_string = double
-        # Mutant kill
-        expect(version_string).to receive(:chomp)
-        expect_any_instance_of(described_class).to receive(:`).with('git rev-parse HEAD').and_return(version_string)
+      let(:resp) { JSON.parse(last_response.body, symbolize_names: true) }
+
+      it 'displays the APP_VERSION env var' do
         get '/status'
+        expect(resp).to include(version: 'c6f1b2a')
       end
     end
   end
 
-  context 'the S3 read test failed' do
+  context 'the blob storage read test failed' do
     before do
-      allow(bucket_status).to receive(:readable?).and_return(false)
+      allow(container_status).to receive(:readable?).and_return(false)
       get '/status'
     end
 
@@ -73,7 +71,7 @@ RSpec.describe TaxTribunal::Status do
 
     describe 'read_test' do
       specify do
-        expect(response[:dependencies][:s3][:read_test]).to eq('failed')
+        expect(response[:dependencies][:blob_storage][:read_test]).to eq('failed')
       end
     end
   end

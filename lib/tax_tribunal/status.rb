@@ -10,7 +10,7 @@ module TaxTribunal
         service_status: checks[:service_status],
         version: version,
         dependencies: {
-          s3: {
+          blob_storage: {
             read_test: checks[:read_test],
           },
           sso_test: checks[:sso_test]
@@ -21,12 +21,7 @@ module TaxTribunal
     private
 
     def version
-      # This has been manually checked in a demo app in a docker container running
-      # ruby:latest with Docker 1.12. Ymmv, however; in particular it may not
-      # work on alpine-based containers. It is mocked at the method level in the
-      # specs, so it is possible to simply comment the call out if there are
-      # issues with it.
-      `git rev-parse HEAD`.chomp
+      ENV['APP_VERSION']
     end
 
     def service_status
@@ -43,7 +38,7 @@ module TaxTribunal
     end
 
     def read_test
-      @read_test ||= settings.bucket_status.readable?
+      @read_test ||= settings.container_status.readable?
     end
 
     def sso_test

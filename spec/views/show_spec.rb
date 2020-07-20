@@ -7,7 +7,7 @@ RSpec.describe 'show template' do
   subject { Erubis::Eruby.new(template_file) }
 
   describe 'escapes html in filenames' do
-    let(:file) { double(file_name: 'test.doc', s3_url: 's3://endpoint', name: '<script>alert("boom!");</script>') }
+    let(:file) { double(file_name: 'test.doc', url: 'https://example.blob.core.windows.net', name: '<script>alert("boom!");</script>') }
 
     specify do
       expect(subject.evaluate(case: tribunal_case)).not_to match(/<script>alert\("boom!"\);<\/script>/)

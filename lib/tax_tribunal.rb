@@ -1,9 +1,10 @@
 require 'sinatra'
 require 'securerandom'
+require 'azure/storage/blob'
 
 # Load order is important, alphabetical otherwise
-require_relative 'tax_tribunal/s3'
-require_relative 'tax_tribunal/bucket_status'
+require_relative 'tax_tribunal/azure_blob_storage'
+require_relative 'tax_tribunal/container_status'
 require_relative 'tax_tribunal/case'
 require_relative 'tax_tribunal/downloader'
 require_relative 'tax_tribunal/download'
