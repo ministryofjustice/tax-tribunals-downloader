@@ -16,6 +16,7 @@ module TaxTribunal
       map(&:name).
       reject { |o| o.match(DIRECTORY) }.
       map { |o|
+        o = o.gsub(' ','%20')
         File.new(o)
       }
     end
