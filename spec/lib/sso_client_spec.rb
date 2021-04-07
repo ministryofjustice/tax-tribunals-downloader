@@ -56,8 +56,8 @@ RSpec.describe TaxTribunal::SsoClient do
       end
 
       it 'builds the authorize_url' do
-        expect(auth_code).to have_received(:authorize_url).
-          with(redirect_uri: /http:\/\/localhost:3000.+auth_key=1234&return_to=http:\/\/test\.com/)
+        expect(auth_code).to have_received(:authorize_url)
+          .with(redirect_uri: %r{http://localhost:3000.+auth_key=1234&return_to=http://test\.com})
       end
     end
 
@@ -76,7 +76,7 @@ RSpec.describe TaxTribunal::SsoClient do
       it 'builds the #get_token call' do
         expect(auth_code).to have_received(:get_token).with(
           1234,
-          redirect_uri: /http:\/\/localhost:3000.+auth_key=5678&return_to=http:\/\/test\.com/
+          redirect_uri: %r{http://localhost:3000.+auth_key=5678&return_to=http://test\.com}
         )
       end
 

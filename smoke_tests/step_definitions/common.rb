@@ -26,16 +26,14 @@ When(/^I click the "(.*?)" link$/) do |text|
 end
 
 When(/^I click the "(.*?)" button$/) do |text|
-  begin
-    find("input[value='#{text}']").click
-  rescue Capybara::Poltergeist::MouseEventFailed
-    find("input[value='#{text}']").trigger('click')
-  end
+  find("input[value='#{text}']").click
+rescue Capybara::Poltergeist::MouseEventFailed
+  find("input[value='#{text}']").trigger('click')
 end
 
 Given(/^I fill in my login details$/) do
-  fill_in("Email", with: ENV.fetch('SMOKETEST_USER'))
-  fill_in("Password", with: ENV.fetch('SMOKETEST_PASSWORD'))
+  fill_in('Email', with: ENV.fetch('SMOKETEST_USER'))
+  fill_in('Password', with: ENV.fetch('SMOKETEST_PASSWORD'))
 end
 
 When(/^I fill in "([^"]*)" with "([^"]*)"$/) do |field, value|

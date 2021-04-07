@@ -14,7 +14,7 @@ RSpec.describe TaxTribunal::Root do
 
     it 'returns text/plain' do
       get '/robots.txt'
-      expect(last_response.headers['Content-Type']).to match(/text\/plain/)
+      expect(last_response.headers['Content-Type']).to match(%r{text/plain})
     end
 
     it 'disallows all robots' do

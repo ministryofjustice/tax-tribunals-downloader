@@ -1,6 +1,8 @@
 module TaxTribunal
   class Case
-    DIRECTORY = %r{\/$}
+    # rubocop:disable  Style/RedundantRegexpEscape
+    DIRECTORY = %r{\/$}.freeze
+    # rubocop:enable  Style/RedundantRegexpEscape
 
     class CaseNotFound < StandardError; end
     include TaxTribunal::AzureBlobStorage
@@ -12,13 +14,13 @@ module TaxTribunal
     end
 
     def files
-      @files ||= storage.list_blobs(files_container_name, prefix: case_id).
-      map(&:name).
-      reject { |o| o.match(DIRECTORY) }.
-      map { |o|
-        o = o.gsub(' ','%20')
+      @files ||= storage.list_blobs(files_container_name, prefix: case_id)
+                        .map(&:name)
+                        .reject { |o| o.match(DIRECTORY) }
+                        .map do |o|
+        o = o.gsub(' ', '%20')
         File.new(o)
-      }
+      end
     end
   end
 end

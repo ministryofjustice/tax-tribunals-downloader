@@ -82,7 +82,6 @@ RSpec.describe TaxTribunal::Status do
       get '/status'
     end
 
-
     describe 'service_status' do
       specify do
         expect(response[:service_status]).to eq('failed')

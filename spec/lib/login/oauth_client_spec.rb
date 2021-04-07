@@ -1,24 +1,24 @@
 require 'spec_helper'
 
 RSpec.describe TaxTribunal::Login do
-  let(:parsed_oauth_data) {
+  let(:parsed_oauth_data) do
     {
       id: 1,
-      email: "superadmin@example.com",
-      first_name: "John",
-      last_name: "Bloggs",
+      email: 'superadmin@example.com',
+      first_name: 'John',
+      last_name: 'Bloggs',
       permissions: [
         {
-          organisation: "hmcts.moj",
-          roles: ["viewer"]
+          organisation: 'hmcts.moj',
+          roles: ['viewer']
         }
       ],
       links: {
-        profile: "http://localhost:5000/profile",
-        logout: "http://localhost:5000/users/sign_out"
+        profile: 'http://localhost:5000/profile',
+        logout: 'http://localhost:5000/users/sign_out'
       }
     }
-  }
+  end
 
   before do
     # No need to hit Blob Storage for this now.
@@ -58,7 +58,8 @@ RSpec.describe TaxTribunal::Login do
     context 'OAuth2::Client JSON response' do
       it 'gets parsed' do
         allow(resp).to receive(:body).and_return(parsed_oauth_data.to_json)
-        expect(JSON).to receive(:parse).with(parsed_oauth_data.to_json, symbolize_names: true).and_return(parsed_oauth_data)
+        expect(JSON).to receive(:parse).with(parsed_oauth_data.to_json,
+                                             symbolize_names: true).and_return(parsed_oauth_data)
         # Called indirectly as most of the interaction is buried in private
         # methods.
         get 'oauth/callback?code=deadbeef&auth_key=45678&return_to=/12345'

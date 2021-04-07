@@ -1,6 +1,5 @@
 module TaxTribunal
   module AzureBlobStorage
-
     def storage
       Azure::Storage::Blob::BlobService.create
     end
