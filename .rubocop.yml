@@ -22,7 +22,7 @@ MethodLength:
   Max: 30
 
 BlockLength:
-  Max: 123
+  Max: 120
 
 Style/GuardClause:
   Exclude:
