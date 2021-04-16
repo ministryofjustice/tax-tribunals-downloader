@@ -27,6 +27,7 @@ BlockLength:
 Style/GuardClause:
   Exclude:
     - 'lib/tax_tribunal/user.rb'
+
 AbcSize:
   Max: 35
 
