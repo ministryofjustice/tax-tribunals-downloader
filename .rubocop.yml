@@ -1,4 +1,82 @@
-inherit_from: .rubocop_todo.yml
+AllCops:
+  TargetRubyVersion: 2.7
+  Exclude:
+    - './*'
+    - 'config/**/*'
+    - 'lib/tasks/**/*'
+    - 'features/**/*'
+    - 'smoke_tests/**/*'
+    - 'spec/**/*'
+
+####################################
+## Customization for this project ##
+####################################
+
+ClassLength:
+  Max: 130
+
+LineLength:
+  Max: 140
+
+MethodLength:
+  Max: 30
+
+BlockLength:
+  Max: 123
+
+Style/GuardClause:
+  Exclude:
+    - 'lib/tax_tribunal/user.rb'
+AbcSize:
+  Max: 35
+
+CyclomaticComplexity:
+  Max: 12
+
+Documentation:
+  Enabled: false
+
+FrozenStringLiteralComment:
+  Enabled: false
+
+SymbolArray:
+  Enabled: false
+
+SpaceInsideHashLiteralBraces:
+  Enabled: false
+
+PredicateName:
+  Enabled: false
+
+MultilineIfModifier:
+  Enabled: false
+
+Layout/HashAlignment:
+  Enabled: false
+
+IfUnlessModifier:
+  Enabled: false
+
+StringLiterals:
+  Enabled: false
+
+TrailingCommaInArrayLiteral:
+  Enabled: false
+
+TrailingCommaInHashLiteral:
+  Enabled: false
+
+TrailingCommaInArguments:
+  Enabled: false
+
+MultilineMethodCallIndentation:
+  Enabled: false
+
+EmptyLineAfterGuardClause:
+  Enabled: false
+
+RescuedExceptionsVariableName:
+  Enabled: false
 
 Style/FrozenStringLiteralComment:
   Enabled: false

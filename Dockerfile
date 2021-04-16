@@ -19,6 +19,8 @@ RUN apt-get update -q && \
     rm -rf /var/lib/apt/lists/* && rm -fr *Release* *Sources* *Packages* && \
     truncate -s 0 /var/log/*log
 
+RUN bash -lc 'rvm get stable; rvm install 2.7.3; rvm --default use ruby-2.7.3'
+
 ENV PUMA_PORT 8000
 EXPOSE $PUMA_PORT
 
@@ -28,7 +30,7 @@ ENV PHUSION true
 COPY . /home/app
 WORKDIR /home/app
 
-RUN gem install bundler -v 2.2.15
+RUN gem install bundler -v 2.1.4
 RUN bundle install --without test development
 
 COPY run.sh /home/app/run
