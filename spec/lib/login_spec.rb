@@ -33,7 +33,7 @@ RSpec.describe TaxTribunal::Login do
     context 'not logged in' do
       before do
         allow_any_instance_of(described_class).to receive(:logged_in?).and_return(false)
-        allow(SecureRandom).to receive(:uuid).and_return(12345)
+        allow(SecureRandom).to receive(:uuid).and_return(12_345)
         allow_any_instance_of(described_class).to receive(:session).and_return(session)
         allow(TaxTribunal::SsoClient).to receive(:new).and_return(sso_client)
         get '/login'
@@ -44,7 +44,7 @@ RSpec.describe TaxTribunal::Login do
       end
 
       it 'stores an auth_key in the session to lookup on callback' do
-        expect(session).to have_received(:'[]=').with(:auth_key, 12345).at_least(:once)
+        expect(session).to have_received(:'[]=').with(:auth_key, 12_345).at_least(:once)
       end
 
       context 'builds and redirects to oauth authorized callback url' do
@@ -87,8 +87,8 @@ RSpec.describe TaxTribunal::Login do
 
   describe 'get /oauth/callback' do
     subject { get '/oauth/callback', params }
-    let(:auth_key) { 67890 }
-    let(:params) { { code: 12345, auth_key: auth_key, return_to: 'some-url' } }
+    let(:auth_key) { 67_890 }
+    let(:params) { { code: 12_345, auth_key: auth_key, return_to: 'some-url' } }
     let(:json_response) { double(:json_response).as_null_object }
 
     before do

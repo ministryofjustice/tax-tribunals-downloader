@@ -1,7 +1,7 @@
 module TaxTribunal
   class User
     extend TaxTribunal::AzureBlobStorage
-    USERS_DIR = 'users'
+    USERS_DIR = 'users'.freeze
 
     def self.find(uuid)
       return nil if uuid.nil? || uuid.empty?
@@ -19,7 +19,7 @@ module TaxTribunal
 
     def self.get_user(uuid)
       storage.get_blob(user_container_name, user_id(uuid)).last
-    rescue
+    rescue StandardError
       nil
     end
 

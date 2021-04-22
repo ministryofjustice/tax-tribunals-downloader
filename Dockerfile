@@ -1,4 +1,4 @@
-FROM employmenttribunal.azurecr.io/ruby25-onbuild:0.4
+FROM phusion/passenger-ruby27
 
 # Adding argument support for ping.json
 ARG APP_VERSION=unknown
@@ -19,12 +19,20 @@ RUN apt-get update -q && \
     rm -rf /var/lib/apt/lists/* && rm -fr *Release* *Sources* *Packages* && \
     truncate -s 0 /var/log/*log
 
+RUN bash -lc 'rvm get stable; rvm install 2.7.3; rvm --default use ruby-2.7.3'
+
 ENV PUMA_PORT 8000
 EXPOSE $PUMA_PORT
 
 # running app as a servive
 ENV PHUSION true
-RUN mkdir /etc/service/app
-COPY run.sh /etc/service/app/run
-RUN chmod +x /etc/service/app/run
 
+COPY . /home/app
+WORKDIR /home/app
+
+RUN gem install bundler -v 2.1.4
+RUN bundle install --without test development
+
+COPY run.sh /home/app/run
+RUN chmod +x /home/app/run
+CMD ["./run"]

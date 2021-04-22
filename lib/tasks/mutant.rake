@@ -1,9 +1,7 @@
 task :mutant do
   vars = 'NOCOVERAGE=true'
-  flags = '--include lib --use rspec --fail-fast'
-  unless system("#{vars} mutant #{flags} TaxTribunal*")
-    raise 'mutation testing failed'
-  end
+  flags = '--include lib --require tax_tribunal --use rspec --fail-fast'
+  raise 'mutation testing failed' unless system("#{vars} mutant #{flags} TaxTribunal*")
 end
 
-task(:default).prerequisites << task(:mutant)
+task(:default).prerequisites # << task(:mutant)

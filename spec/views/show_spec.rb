@@ -7,10 +7,13 @@ RSpec.describe 'show template' do
   subject { Erubis::Eruby.new(template_file) }
 
   describe 'escapes html in filenames' do
-    let(:file) { double(file_name: 'test.doc', url: 'https://example.blob.core.windows.net', name: '<script>alert("boom!");</script>') }
+    let(:file) do
+      double(file_name: 'test.doc', url: 'https://example.blob.core.windows.net',
+             name: '<script>alert("boom!");</script>')
+    end
 
     specify do
-      expect(subject.evaluate(case: tribunal_case)).not_to match(/<script>alert\("boom!"\);<\/script>/)
+      expect(subject.evaluate(case: tribunal_case)).not_to match(%r{<script>alert\("boom!"\);</script>})
     end
   end
 end

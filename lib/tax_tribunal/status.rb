@@ -3,7 +3,6 @@ require 'active_support/core_ext/object/blank'
 
 module TaxTribunal
   class Status < Downloader
-
     get '/status.?:format?' do
       checks = service_status
       {
@@ -11,7 +10,7 @@ module TaxTribunal
         version: version,
         dependencies: {
           blob_storage: {
-            read_test: checks[:read_test],
+            read_test: checks[:read_test]
           },
           sso_test: checks[:sso_test]
         }
@@ -48,7 +47,7 @@ module TaxTribunal
       # TODO: Use the SSO status endpoint to  ascertain health when one becomes
       # available.
       @sso_test ||= SsoClient.new.authorize_url({ auth_key: SecureRandom.uuid, return_to: '/' }).match(/\Ahttp/)
-    rescue
+    rescue StandardError
       nil
     end
   end
