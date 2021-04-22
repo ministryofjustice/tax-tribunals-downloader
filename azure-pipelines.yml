@@ -26,6 +26,7 @@ variables:
   application.name: 'tt-downloader'
   azure.subscription.endpoint: 'hmcts-pet'
   manual.branch.prefix: 'master'
+  azure.container.registry: 'employmenttribunal.azurecr.io'
 
 # resources:
   # containers:
