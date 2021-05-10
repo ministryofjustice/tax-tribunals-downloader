@@ -7,13 +7,13 @@ RSpec.describe TaxTribunal::Downloader do
 
   describe '#current_user' do
     it 'uses session[:auth_key] to find the current user' do
-      expect(session).to receive(:fetch).with(:auth_key)
+      expect(session).to receive(:[]).with(:auth_key)
       allow(subject).to receive(:session).and_return(session)
       subject.current_user
     end
 
     it 'calls User#find' do
-      allow(session).to receive(:fetch).with(:auth_key).and_return(12_345)
+      allow(session).to receive(:[]).with(:auth_key).and_return(12_345)
       allow(subject).to receive(:session).and_return(session)
       expect(TaxTribunal::User).to receive(:find).with(12_345)
       subject.current_user

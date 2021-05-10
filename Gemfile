@@ -19,7 +19,7 @@ gem 'pry'
 gem 'puma'
 gem 'rake'
 gem 'sentry-raven'
-gem 'sinatra', '~> 1.4.8'
+gem 'sinatra', '~> 2.1'
 gem 'sinatra-router', '~> 0.2.4'
 
 group :development, :test do
