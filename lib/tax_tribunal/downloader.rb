@@ -20,7 +20,7 @@ module TaxTribunal
     # :nocov:
 
     def current_user
-      @current_user ||= User.find(session.fetch(:auth_key))
+      @current_user ||= User.find(session[:auth_key])
     end
 
     def logged_in?
