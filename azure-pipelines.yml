@@ -41,7 +41,7 @@ jobs:
       vmImage: 'Ubuntu-20.04'
 
     variables:
-      rubyVersion: '= 2.7.4'
+      rubyVersion: '= 2.7.5'
       bundlerVersion: '2.1.4'
 
     steps:
