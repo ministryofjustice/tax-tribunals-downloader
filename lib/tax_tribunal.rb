@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'securerandom'
 require 'azure/storage/blob'
-require 'dotenv/load'
+require 'dotenv/load' if Sinatra::Base.development?
 
 # Load order is important, alphabetical otherwise
 require_relative 'tax_tribunal/azure_blob_storage'
