@@ -3,18 +3,27 @@
 [![Build
 Status](https://travis-ci.org/ministryofjustice/tax-tribunals-downloader.svg?branch=master)](https://travis-ci.org/ministryofjustice/tax-tribunals-downloader)
 
+
+## Running Locally
+
+Once env variables are set up:
+`rackup config.ru`
+
 ## ENV variables
 
 Tax Tribunal Downloader requires several environment variables to be set
 in order to run:
 
-### FILES_CONTAINER_NAME
+### CLOUD STORAGE
 
-The Blob Storage container where the uploads will be stored.
+## AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_ACCESS_KEY
+ The Blob Storage container where the uploads will be stored.
+ 
+You will need to get credentials from the [azure portal](https://portal.azure.com/#@HMCTS.NET/resource/subscriptions/58a2ce36-4e09-467b-8330-d164aa559c68/resourceGroups/tt_stg_taxtribunalsazure_resource_group/providers/Microsoft.Storage/storageAccounts/stgttfilestore/containersList)
 
-### USER_CONTAINER_NAME
+## FILES_CONTAINER_NAME and USER_CONTAINER_NAME
 
-The Blob Storage container where user sessions are persisted.
+Enter the container names provided or create new containers in the Azure Portal [container list](https://portal.azure.com/#@HMCTS.NET/resource/subscriptions/58a2ce36-4e09-467b-8330-d164aa559c68/resourceGroups/tt_stg_taxtribunalsazure_resource_group/providers/Microsoft.Storage/storageAccounts/stgttfilestore/containersList)
 
 ### MOJSSO_ID
 
