@@ -182,7 +182,7 @@ GEM
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.3)
-    rack-protection (2.1.0)
+    rack-protection (2.2.0)
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -233,10 +233,10 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
-    sinatra (2.1.0)
+    sinatra (2.2.0)
       mustermann (~> 1.0)
       rack (~> 2.2)
-      rack-protection (= 2.1.0)
+      rack-protection (= 2.2.0)
       tilt (~> 2.0)
     sinatra-router (0.2.4)
       sinatra (>= 1.4, < 3.0)
@@ -298,7 +298,7 @@ DEPENDENCIES
   rubocop-rspec
   sentry-ruby (~> 4.6)
   simplecov
-  sinatra (~> 2.1)
+  sinatra (~> 2.2)
   sinatra-router (~> 0.2.4)
   vcr
   webmock
